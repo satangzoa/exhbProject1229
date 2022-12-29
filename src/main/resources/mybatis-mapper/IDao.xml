@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="com.Exhibition.home.dao.IDao">
+	
+		<!-- 멤버관련 SQL -->
+		<insert id="memberJoin">
+			INSERT INTO emember(mid, mpw, mname, memail) VALUES(#{param1},#{param2},#{param3},#{param4})
+		</insert>
+		<select id="checkId"  resultType="int" >
+			SELECT COUNT(*) FROM emember WHERE mid=#{param1}
+		</select>
+		<select id="checkIdAndPW"  resultType="int" >
+			SELECT COUNT(*) FROM emember WHERE mid=#{param1} AND mpw=#{param2}
+		</select>
+		<select id="getMemberInfo" resultType="com.Exhibition.home.dto.MemberDto">
+			SELECT * FROM emember WHERE mid=#{param1}
+		</select>
+		<update id="memberModify">
+			UPDATE emember SET mpw=#{param2}, mname=#{param3}, memail=#{param4}  WHERE mid=#{param1}
+		</update>
+	<!-- 게시판 -->
+	<insert id="writeQuestion">
+		INSERT INTO ABOARD(qnum, qid, qname, qcontent, qemail) VALUES(ABOARD_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4})
+	</insert>
+	
+	<select id="questionList" resultType="com.Exhibition.home.dto.QBoardDto"> <!-- ROWNUM 오라클에 자동생성되는 번호 A와 PAGE는 가상의 필드-->
+		SELECT * FROM
+			(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM <!--소수점 버림 함수 Floor를 사용 amount는 5 -->
+			FROM
+			(SELECT * FROM ABOARD ORDER BY qnum DESC)A)
+		WHERE PAGE = #{pageNum}
+		</select>
+	
+	<select id="questionView" resultType="com.Exhibition.home.dto.QBoardDto">
+		SELECT * FROM ABOARD WHERE qnum=#{param1}
+	</select>	
+	
+		<update id="questionModify">
+	 	update ABOARD set qname=#{param2},qcontent=#{param3}, qemail=#{param4} where qnum=#{param1}
+	</update>
+	
+	<delete id="questionDelete">
+		DELETE FROM ABOARD WHERE qnum=#{param1}
+	</delete>
+	
+	 <select id="boardAllCount" resultType="int">
+		select count(*) from ABOARD 
+	</select> 
+	</mapper>

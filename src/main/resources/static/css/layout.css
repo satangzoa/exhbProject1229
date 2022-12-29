@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+/* reset */
+*,
+*::before,
+*::after {box-sizing: border-box;}
+html, body{ font-size:16px;word-break: keep-all;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0}
+body {-webkit-text-size-adjust:none;} 
+ul, li{list-style:none}
+.mgt20{margin-top:20px!important}
+.mgt50{margin-top:50px!important}
+.mgt100{margin-top:100px}
+#wrapper{width:1440px; margin:0 auto}
+.reservationWrap li{display:flax;}
+
+.container {display: flex;}
+.container ul.reservationWrap{margin:20px 0}
+.container ul.reservationWrap{width:100%}
+.container ul.reservationWrap li{float:left;; margin-right:30px}
+.container ul.reservationWrap li div .exhiPoster{width: 280px;height: 360px;}
+.container ul.reservationWrap li .rv_btnset{width:100%; margin-top:10px}
+.container ul.reservationWrap li .rv_btnset ul li:nth-child(1){margin-right:10px}
+.reservationBtn{width:190px}
+
+#eventWrap {overflow: auto}
+#eventWrap h3 ,#goodsWrap h3{margin-bottom:15px}
+#eventWrap ul{}
+#eventWrap ul li{float:left;width: 440px; margin-right:50px;margin-bottom:5px}
+#eventWrap ul li .eventImg{background:#eee; width:350px; height:180px;border-radius: 10px;}
+#eventWrap ul li .eventTitle{font-size:1.0em}
+#eventWrap ul li .eventDate{font-size:.95em; color:#999}
+#eventWrap ul li:last-child {margin-right:0px}
+
+#goodsWrap{width:100%;overflow: auto}
+#goodsWrap .goodslist {width:50%; float:left}
+#goodsWrap .goodslist p{width:200px; height:200px;background:#eee;}
+
+
+#footer{clear:both; background:#999; text-align:center; padding:15px 0; color:#fff}
+
+
+
+
+
+@media only screen and (max-width: 680px) {
+#wrapper{width:100%}
+.container ul.reservationWrap li { margin-right:5px}
+.container ul.reservationWrap li{width:50%}
+.container ul.reservationWrap li div .exhiPoster{width: 100%;height: 360px;}
+.container ul.reservationWrap li::nth-child(2) ,.container ul.reservationWrap li::nth-child(4) { margin-right:0px}
+#exhiPosterWrap ,#eventWrap, #goodsWrap{width:95%; margin:0 auto}
+#eventWrap ul li .eventImg {width:100%}
+#eventWrap ul li {width: 100%;margin-right: 0px;margin-bottom: 30px;}
+.reservationBtn{width:100%}
+
+
+}
