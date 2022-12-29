@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="inc/header.jsp" %>
+<!-- 	<%@ include file="inc/header.jsp" %> -->
+
     <style>
         .input-group {
             margin-bottom : 15px

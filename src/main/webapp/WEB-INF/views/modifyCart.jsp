@@ -52,7 +52,7 @@
                 </tr>
             </table>
             <input type="hidden" name="count" value="${map.count}">
-            <button type="submit" id="btnUpdate">수정</button>
+            <button type="submit" id="btnUpdate">수정완료</button>
         </form>
         </c:otherwise>
     </c:choose>

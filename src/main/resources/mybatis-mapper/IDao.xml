@@ -55,66 +55,83 @@
 	
 	<!-- 장바구니 추가 -->
 	<insert id="insertCart">
-        insert into tbl_cart( cart_id, user_id, product_id, amount) 
+        insert into cart( cartId, userId, productId, amount) 
         VALUES (seq_cart.NEXTVAL, #{param1}, #{param2}, #{param3})
     </insert>
     
     <!-- 2. 장바구니 목록 -->
-    <select id="listCart" resultType="com.example.spring02.model.shop.dto.CartVO">
+    <select id="listCart" resultType="com.Exhibition.home.dto.cart">
         SELECT
-            c.cart_id AS cartId, 
-            c.user_id AS userId,
-            p.product_id As productId,
-            m.user_name AS userName, 
-            p.product_name AS productName, 
-            c.amount, 
-            p.product_price AS productPrice, 
-            (product_price * amount) money
+             cartId, 
+           userId,
+             userName,
+             productId, 
+             productName, 
+             productPrice,
+            amount, 
+            (productPrice * amount) money
         FROM
-            tbl_member m, tbl_product p, tbl_cart c
-        WHERE m.user_id = c.user_id
-            AND p.product_id = c.product_id
-            AND c.user_id = #{param1}
+             member , product , cart
+        WHERE  userId
+            AND  productId
+            AND userId = #{param1}
         ORDER BY
-            c.cart_id
+            userId
     </select>
     
     <!-- 3. 장바구니 전체 금액 -->
     <select id="sumMoney" resultType="int">
-        SELECT NVL(SUM(product_price * amount), 0) money
-        FROM tbl_cart c, tbl_product p
-        WHERE c.product_id = p.product_id AND c.user_id = #{param1}
+        SELECT NVL(SUM(productPrice * amount), 0) money
+        FROM cart , product 
+        WHERE productId AND userId = #{param1}
     </select>
     
     <!-- 4. 장바구니 수정 -->
     <update id="modifyCart">
         UPDATE tbl_cart    
-        SET amount = #{param1}   WHERE user_id= #{param2}  AND product_id = #{productId}
+        SET amount = #{param1}   WHERE userId= #{param2}  AND productId = #{param3}
     </update>
     
     <!-- 5. 장바구니 삭제 -->
     <delete id="deleteCart">
-        DELETE FROM tbl_cart  WHERE cart_id = #{param1}
-       
+        DELETE FROM cart  WHERE cartId = #{param1}
     </delete>
     
     <!-- 6. 장바구니에 동일한 상품 레코드 확인 -->
     <select id="countCart" resultType="int">
-        SELECT COUNT(*)
-        FROM tbl_cart
-        WHERE user_id= #{userId} 
-        AND product_id = #{productId}
+        SELECT COUNT(*)   FROM cart
+        WHERE cartId= #{param1}  AND productId = #{param2}
     </select>
     
     <!-- 7. 장바구니에 동일한 상품이 존재하면 수정 -->
     <update id="updateCart">
-        UPDATE tbl_cart 
-        SET amount = amount + #{amount} 
-        WHERE user_id= #{userId} 
-        AND product_id = #{productId}
+        UPDATE cart  SET amount = amount + #{param1} 
+        WHERE userId= #{param2}  AND productId = #{param3}
     </update>
 
-		
+ <!-- 01. 상품 전체 목록 -->
+    <select id="listProduct" resultType="com.Exhibition.home.dto.product">
+        SELECT  
+             productId,
+             productName,
+             productPrice,
+            productDesc,
+            productUrl
+        FROM product 
+        ORDER BY productName
+    </select>
+    
+    <!-- 02. 상품 상세보기 -->
+    <select id="detailProduct" resultType="com.Exhibition.home.dto.product">
+        SELECT
+            productId, 
+             productName, 
+             productPrice, 
+            productDesc, 
+            productUrl
+        FROM product 
+        WHERE productId = #{param1}
+    </select>
 	</mapper>
 	
 	

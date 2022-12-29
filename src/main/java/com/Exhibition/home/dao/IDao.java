@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.Exhibition.home.dto.*;
-import com.Exhibition.home.dto.MemberDto;
-import com.Exhibition.home.dto.Criteria;
-import com.Exhibition.home.dto.QBoardDto;
 
 public interface IDao {
 
@@ -27,5 +24,20 @@ public interface IDao {
 			public int boardAllCount();// 게시판 총 글의 개수 가져오기
 			
 	//장바구니
-			
+			public List<cart> listCart(String userId);//장바구니 목록
+			public int sumMoney(cart bd);//장바구니 전체금액
+			public void modifyCart(String cartId, String amount, String productId);//장바구니 수정
+			public void deleteCart(String cartId);//장바구니 삭제
+			 public int countCart(String cartId, String productId );//장바구니에 동일한 상품 확인
+			 public void updateCart(String userId, String productId);//장바구니에 동일한 상품이 존재하면 수정
+			 
+			 //상품 
+			 public List<product> listProduct(product prt); //상품 전체 목록
+			public product  detailProduct(String productid);//상품 상세보기
+			//상품수정
+			//상품삭제
+			 
 }
+
+
+
