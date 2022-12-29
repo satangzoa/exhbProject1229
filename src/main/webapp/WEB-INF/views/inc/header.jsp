@@ -31,10 +31,10 @@
 	        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 	          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	            <li class="nav-item">
-	              <a class="nav-link active" aria-current="page" href="#">예매</a>
+	              <a class="nav-link active" aria-current="page" href="reservationPage2">예매</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="#">스토어</a>
+	              <a class="nav-link" href="buy">스토어</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="event">이벤트</a>

@@ -277,4 +277,23 @@ public class MainController {
 		return "memberModifyOk";
 	}
 	
+	
+	@RequestMapping (value ="reservationPage2")
+	public String reservationPage () {
+		
+		return "reservationPage2";
+	}
+	
+	@RequestMapping(value = "/buy")
+	public String buy() {
+		
+		return "buy";
+	}
+	
+	@RequestMapping(value = "/cart_List")
+	public String cart_List() {
+		
+		return "cart_List";
+	}
+	
 }
