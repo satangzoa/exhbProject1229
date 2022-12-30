@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class QBoardDto {
+public class QBoardDto {//aboard //qnum qid qname qcontent qemail qdate
 
 	private int qnum;
 	private String qid;

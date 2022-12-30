@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.Exhibition.home.dto.*;
-import com.Exhibition.home.dto.MemberDto;
-import com.Exhibition.home.dto.Criteria;
-import com.Exhibition.home.dto.QBoardDto;
 
 public interface IDao {
 
@@ -25,7 +22,9 @@ public interface IDao {
 			public void questionModify(String qnum,  String qname, String qcontent, String qemail );// 해당글 번호로 조회하여 질문 수정 UPDATE
 			public void questionDelete(String qnum);//글삭제 DELETE
 			public int boardAllCount();// 게시판 총 글의 개수 가져오기
+			public BuyDto joinTest(String string);//조인테스트
 			
 	//장바구니
+			
 			
 }

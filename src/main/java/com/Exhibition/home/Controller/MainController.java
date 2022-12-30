@@ -1,8 +1,10 @@
 package com.Exhibition.home.Controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -295,7 +297,37 @@ public class MainController {
 		
 		return "cart_List";
 	}
+	@RequestMapping(value = "/MainStore")
+	public String MainStore() {
+		
+		return "MainStore";
+	}
 	
+	@RequestMapping(value = "/reservationPage")
+	public String reservationPage2() {
+		
+		return "reservationPage";
+	}
 	
+	@RequestMapping(value = "test")
+	public String test(Model model, HttpServletResponse response) throws IOException {
+			
+		IDao dao = sqlSession.getMapper(IDao.class);		
+		
+		BuyDto buyDto = dao.joinTest("tiger");
+		
+		
+		System.out.println(buyDto.getMemberDto().getMid());
+		
+		model.addAttribute("buyInfo", buyDto);
+		
+		//특정 페이지로 이동전에 자바스크립트 경고창 띄우기
+//		response.setContentType("text/html; charset=UTF-8");
+//        PrintWriter out = response.getWriter();
+//        out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+//        out.flush(); 
+		
+		return "test";
+	}
 	
 }

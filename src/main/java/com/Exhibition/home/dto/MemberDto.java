@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberDto {
+public class MemberDto {//emember 
 	private String mid;//아이디
 	private String mpw;//비밀번호
 	private String mname;//이름

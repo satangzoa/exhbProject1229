@@ -10,6 +10,8 @@
 <div class="container">
     <h2 class="my-3 border-bottom pb-2">상품 상세정보</h2>
            
+            
+         <!--  	 <img src="${pageContext.request.contextPath }/resources/img/kongyu.jpg" style="height: 300px; width: 400px;">-->
             	<img src="/resources/img/JJang.png">
                 <table class="table table-bordered" style="height: 200px; width: 300px;">
                     <tr>
@@ -56,4 +58,16 @@
 </body>
 </html>
 
- 
+ <!-- <form name="form1" method="post" action="${path}/shop/cart/insert.do">
+<form name="form1" method="post" action="">
+
+상품을 장바구니에 추가시키기 위해 상품id번호, 수량을 form태그 전송
+<input type="hidden" name="productId" value="">
+
+현재의 상품ID를 입력받기 위해 hidden속성으로 처리
+<select name="amount">
+    <c:forEach begin="1" end="10" var="i">
+        <option value="">사과</option>
+        <option value="">바나나</option>
+    </c:forEach>
+</select>-->

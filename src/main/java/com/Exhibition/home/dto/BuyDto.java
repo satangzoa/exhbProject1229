@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BuyDto { //table tbl_cart
+public class BuyDto { //장바구니 table cart
 
-	private int cart_id;
-	private int user_id;
-	private int product_id;
-	private int amount;
-	
+	private String cartId;//장바구니 아이디
+	private String mid;//사용자 아이디
+	private String productId;//상품아이디
+	private int count;//수량
+
+	private MemberDto memberDto;
 }

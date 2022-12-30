@@ -2,25 +2,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <title>상품장바구니 목록</title>
 </head>
 <body>
-    <div class="container">
-    <h2 class="my-3 border-bottom pb-2">장바구니 확인</h2>
-         
-        <form name="" id="" method="post" action="">
-            <table class="table table-bordered" >
+    <h2>장바구니 확인</h2>
+   
+          
+       
+          <!-- <c:choose>
+        <c:when test="${map.count == 0}">-->
+            
+        </c:when>
+        <c:otherwise>
+
+        장바구니가 비어있습니다.
+        
+      <!--  <form name="form1" id="form1" method="post" action="${path}/shop/cart/update.do">-->
+        <form name="form1" id="form1" method="post" action="">
+            <table border="1">
                 <tr>
-                    <th scope="col">상품명</th>
-                    <th scope="col">상품가격</th>
-                    <th scope="col">수량</th>
-                    <th scope="col">총금액</th>
-                    <th scope="col">취소</th>
+                    <th>상품명</th>
+                    <th>단가</th>
+                    <th>수량</th>
+                    <th>금액</th>
+                    <th>취소</th>
                 </tr>
+                <c:forEach var="row" items="" varStatus="i">
                 <tr>
                     <td>
-                       짱구베게
+                       상품이름 ${row.productName}
                     </td>
                     <td style="width: 80px" align="right">
                         <fmt:formatNumber pattern="###,###,###" value=""/>
@@ -33,20 +43,25 @@
                         <fmt:formatNumber pattern="###,###,###" value=""/>
                     </td>
                     <td>
-                        <a href="">삭제</a>
+                      <!--  <a href="${path}/shop/cart/delete.do?cartId=${row.cartId}">삭제</a>-->
+                        <a href="${path}/shop/cart/delete.do?cartId=${row.cartId}">삭제</a>
                     </td>
                 </tr>
+                </c:forEach>
                 <tr>
                     <td colspan="5" align="right">
                         장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###" value=""/><br>
-                        배송료 :<br>
+                        배송료 : ${map.fee}<br>
                         전체 주문금액  :<fmt:formatNumber pattern="###,###,###" value=""/>
                     </td>
                 </tr>
             </table>
             <input type="hidden" name="count" value="">
-            <button type="submit" id="" class="btn btn-primary my-2">수정</button>
+            <button type="submit" id="btnUpdate">수정</button>
         </form>
+        </c:otherwise>
+    </c:choose>
+  <!--  <button type="button" id="btnList">상품목록</button>-->
   <a href="buy">사러가기</a>
 </body>
 </html>
