@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class ProductDto {//상품테이블 product
 
 	private int pId;//상품 번호
-	private int pname;//상품 이름
-	private int pprice;//상품 가격
+	private String pname;//상품 이름
+	private String pprice;//상품 가격
 
 }

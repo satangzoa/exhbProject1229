@@ -8,6 +8,7 @@
 <title>상품 판매</title>
 </head>
 <body>
+<%@ include file="inc/header.jsp" %>
 <div class="container">
 	<h2 class="my-3 border-bottom pb-2">이것저것  판매</h2>
 	
@@ -38,12 +39,14 @@
       <td><img src="/resources/img/dog.png" onclick=""></td>
       <td>멍멍멍</td>
       <td>10000원</td>
+      
     </tr>
     <tr>
       <th >2</th>
       <td><img src="/resources/img/so.png"></td>
       <td>소소소</td>
       <td>소소한가격</td>
+    
     </tr>
     <tr>
       <th >3</th>
@@ -54,5 +57,6 @@
   </tbody>
 </table>
 </div>
+<%@ include file="inc/footer.jsp" %>
 </body>
 </html>

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 조인 연습 -->
 	회원아이디 : ${buyInfo.mid }<br>
 	이름 : ${buyInfo.memberDto.mname }<br>
 	
