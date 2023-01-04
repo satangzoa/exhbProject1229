@@ -53,18 +53,13 @@ public class TicketController {
 //		return "ticketingOk";
 //	}
 	
-	@RequestMapping (value ="/ticketingtest")
+	@RequestMapping (value ="/ticketingOk")
 	public String ticketingtest(HttpServletRequest request,Model model) {
 		String id = request.getParameter("mid");
 		String ticketName = request.getParameter("ticketName");
 		String rday = request.getParameter("rday");
 		String price = request.getParameter("price");
 		String count = request.getParameter("count");
-		System.out.println(id);
-		System.out.println(ticketName);
-		System.out.println(rday);
-		System.out.println(price);
-		System.out.println(count);
 		
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
@@ -81,11 +76,11 @@ public class TicketController {
 	
 	
 
-	@RequestMapping(value="/ticketingOk")
-	public String ticketingOk(HttpServletResponse response,HttpSession session) {
-		return "ticketingOk";
-	}
-	
+//	@RequestMapping(value="/ticketingOk")
+//	public String ticketingOk(HttpServletResponse response,HttpSession session) {
+//		return "ticketingOk";
+//	}
+//	
 	@RequestMapping(value="/ticket")
 	public String confirm() {
 		
@@ -108,14 +103,16 @@ public class TicketController {
 //	}
 //	
 	@RequestMapping(value="/ticketing")
-	public String ticketing(HttpServletRequest request, Model model) {
+	public String ticketing(HttpServletRequest request, Model model,HttpSession session) {
 		
+		String sessionId = (String) session.getAttribute("memberId");
 		String tnum = request.getParameter("tnum");
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		Ticket ticket =dao.tictekInfo(tnum);
 		
+		model.addAttribute("memberId", sessionId);
 		model.addAttribute("ticket", ticket);
 		model.addAttribute("mid", ticket.getMid());
 		

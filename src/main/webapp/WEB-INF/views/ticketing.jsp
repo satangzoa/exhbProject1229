@@ -73,7 +73,7 @@
 <body>
 <%@ include file="inc/header.jsp" %>
    <center>
-   <form action ="ticketingtest?num=${param.num}" method="post"> 
+   <form action ="ticketingOk?num=${param.num}" method="post"> 
    <input type="hidden" value="${ticket.tnum }" name="tnum">
    <table width="75%" border="0" cellspacing="0" cellpadding="20">
       <tr>

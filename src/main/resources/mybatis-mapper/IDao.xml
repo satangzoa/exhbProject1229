@@ -4,7 +4,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-	<mapper namespace="com.Exhibition.home.dao.IDao">
+<mapper namespace="com.Exhibition.home.dao.IDao">
 		<!-- 멤버관련 SQL -->
 		<insert id="memberJoin">
 			INSERT INTO emember(mid, mpw, mname, memail) VALUES(#{param1},#{param2},#{param3},#{param4})
@@ -89,7 +89,7 @@
 	
 		<select id="tictekInfo" resultType="com.Exhibition.home.dto.Ticket"> 
 		SELECT * FROM ticket WHERE tnum=#{param1} 
-		</select>-->
+		</select>
 		
 		<!-- 티켓 예매하기 실행된다 -->
 		<insert id="ticketing">
@@ -100,7 +100,7 @@
 		
 		
 		
-	</mapper>
+</mapper>
 	
 	
 	

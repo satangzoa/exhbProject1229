@@ -30,11 +30,11 @@ public interface IDao {
 			
 			//예매
 				//예매할 티켓 정보가져오기
-			//	public Ticket geTicteckInfo(String mid);
+			
 			public Ticket tictekInfo(String tnum);
 				
 				//예매
-				public int ticketing(String mid, String ticketName, String rday, String price , String count);
+			public int ticketing(String mid, String ticketName, String rday, String price , String count);
 				
 				//예매한 티켓 정보 가져오기
 			
