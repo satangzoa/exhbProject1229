@@ -50,12 +50,13 @@
                           
                            <tr>
                                  <td colspan="2" align="center">
-                                   <input class="button_type01" type="button" value="예매취소" onclick="script:window.location='ticketDelete?tnum=${ticketRev.tnum}'">
+                                    <input class="button_type01" type="button" value="예매취소" onclick="script:window.location='ticketDelete?tnum=${tnum}'">
                                    <input class="button_type01" type="button" value="처음으로" onclick="script:window.location='index'">
                                </td>
             
                            </tr>
                            </c:forEach>
+                          
                         </form>
                      </center>
                   </td>
