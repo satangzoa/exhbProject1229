@@ -34,7 +34,7 @@
 	              <a class="nav-link active" aria-current="page" href="ticket">예매</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="buy">스토어</a>
+	              <a class="nav-link" href="store">스토어</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="event">이벤트</a>
@@ -54,7 +54,7 @@
           		</li>
           		<% } else { %> 
           		<li class="nav-item">
-             		<a class="nav-link" sec:authorize="isAnonymous()"  href="Ticketing">예매확인/취소</a>
+             		<a class="nav-link" sec:authorize="isAnonymous()"  href="ticketConfirm">예매확인/취소</a>
           		</li>
           		<li class="nav-item">
              		<a class="nav-link" sec:authorize="isAnonymous()"  href="mypage">마이페이지</a>

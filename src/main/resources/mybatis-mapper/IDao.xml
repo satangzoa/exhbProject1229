@@ -68,7 +68,7 @@
 		<result property="count" column="count"/>	
 		
 		<collection property="memberDto" resultMap="memberDto2"></collection>
-		<!-- BoardDto에 있는 private MemberDto memberDto;를 가져온것과 같다 -->
+		<!-- BuyDto에 있는 private MemberDto memberDto;를 가져온것과 같다 -->
 	</resultMap>
 	
 	<select id="joinTest" parameterType="com.Exhibition.home.dto.BuyDto" resultMap="BuyDto2">
@@ -91,14 +91,45 @@
 		SELECT * FROM ticket WHERE tnum=#{param1} 
 		</select>
 		
-		<!-- 티켓 예매하기 실행된다 -->
+		<!-- 티켓 예매하기  -->
 		<insert id="ticketing">
 		insert into ticketing(mid, ticketName, rday, price, count)
 		VALUES(#{param1}, #{param2}, #{param3},#{param4},#{param5}) 
 		</insert>
 		
 		
+		<!-- 티켓 예매 확인정보 가져오기-->
+		<resultMap type="com.Exhibition.home.dto.MemberDto" id="memberDto3">
+		<result property="mid" column="mid"/>
+		<!--  column아이디는 테이블 아이디 -->
+		<result property="mpw" column="mpw"/>
+		<result property="mname" column="mname"/>
+		<result property="memail" column="memail"/>	
+		<result property="mdate" column="mdate"/>	
+	</resultMap>
+	
+	<resultMap type="com.Exhibition.home.dto.Ticketing" id="Ticketing2">
+		<result property="mid" column="mid"/>
+		<result property="ticketName" column="ticketName"/>
+		<result property="rday" column="rday"/>	
+		<result property="price" column="price"/>	
+		<result property="count" column="count"/>	
 		
+		<collection property="memberDto" resultMap="memberDto3"></collection>
+	</resultMap>
+	
+	<select id="ticketConfirm" parameterType="com.Exhibition.home.dto.Ticketing" resultMap="Ticketing2">
+		
+		SELECT 
+			ticketing.mid, ticketing.ticketName,ticketing.rday,ticketing.price,ticketing.count,
+			emember.mid , emember.mname, emember.memail
+		FROM
+			ticketing
+			JOIN emember
+			ON ticketing.mid = emember.mid
+		WHERE ticketing.mid=#{mid}
+		
+	</select>
 		
 </mapper>
 	

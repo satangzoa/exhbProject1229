@@ -15,6 +15,6 @@ public class Ticketing { //ticketing  예매한 티켓정보
 	private String price;//티켓 가격
 	private String count;//티켓 장수
 
-	
+	private MemberDto memberDto;
 }
 

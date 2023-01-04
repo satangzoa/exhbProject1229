@@ -291,16 +291,16 @@ public class MainController {
 
 	
 	
-	@RequestMapping(value = "/buy")
-	public String buy() {
+	@RequestMapping(value = "/store")
+	public String store() {
 		
-		return "buy";
+		return "store";
 	}
 	
-	@RequestMapping(value = "/cart_List")
-	public String cart_List() {
+	@RequestMapping(value = "/cart")
+	public String cart() {
 		
-		return "cart_List";
+		return "cart";
 	}
 	@RequestMapping(value = "/MainStore")
 	public String MainStore() {

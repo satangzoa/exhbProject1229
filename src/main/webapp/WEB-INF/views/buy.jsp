@@ -28,8 +28,8 @@
                     <tr>
                         <td colspan="2">
                             <form name="" method="post" action="cart_List">
-                                <input type="hidden" name="productId" value="">
-                                <select name="amount">
+                                <input type="hidden" name="pname" value="">
+                                <select name="pprice">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>

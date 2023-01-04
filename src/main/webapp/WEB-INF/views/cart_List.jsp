@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <td>
-                       짱구베게
+                       짱구베게${ pname}
                     </td>
                     <td style="width: 80px" align="right">
                         <fmt:formatNumber pattern="###,###,###" value=""/>

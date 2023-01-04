@@ -1,5 +1,6 @@
 package com.Exhibition.home.Controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,4 +133,22 @@ public class TicketController {
 //		return "ticketConfirm";
 //	}
 //	
+	@RequestMapping(value = "ticketConfirm")
+	public String test(Model model, HttpServletResponse response,HttpServletRequest request) throws IOException {
+			
+		IDao dao = sqlSession.getMapper(IDao.class);		
+		
+		String mid = request.getParameter("mid");
+		
+		Ticketing ticketConfirm =dao.ticketConfirm("mid");
+		
+		System.out.println(ticketConfirm.getMemberDto().getMid());
+		
+		model.addAttribute("ticketConfirm", ticketConfirm);
+		
+		
+		return "ticketConfirm";
+	}
+	
+	
 }
