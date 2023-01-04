@@ -134,21 +134,32 @@ public class TicketController {
 //	}
 //	
 	@RequestMapping(value = "ticketConfirm")
-	public String test(Model model, HttpServletResponse response,HttpServletRequest request) throws IOException {
+	public String test(Model model, HttpServletResponse response,HttpServletRequest request,HttpSession session) throws IOException {
 			
 		IDao dao = sqlSession.getMapper(IDao.class);		
 		
-		String mid = request.getParameter("mid");
+		String mid = (String) session.getAttribute("memberId");
 		
-		Ticketing ticketConfirm =dao.ticketConfirm("mid");
+		List<Ticketing> ticketConfirmList =dao.ticketConfirm(mid);
 		
-		System.out.println(ticketConfirm.getMemberDto().getMid());
+		//System.out.println(ticketConfirmList.get(0).getMemberDto().getMid()); 잘가져오는지 확인용
 		
-		model.addAttribute("ticketConfirm", ticketConfirm);
+		model.addAttribute("ticketConfirm", ticketConfirmList);
 		
 		
 		return "ticketConfirm";
 	}
 	
+	
+	@RequestMapping(value="/ticketDelete")
+	public String ticketDelete(HttpServletRequest request, Model model) {
+		
+		String tnum = request.getParameter("tnum");
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.ticketDelete(tnum);
+		
+		return "redirect:ticketConfirm";
+	}
 	
 }

@@ -93,8 +93,8 @@
 		
 		<!-- 티켓 예매하기  -->
 		<insert id="ticketing">
-		insert into ticketing(mid, ticketName, rday, price, count)
-		VALUES(#{param1}, #{param2}, #{param3},#{param4},#{param5}) 
+		insert into ticketing(tnum,mid, ticketName, rday, price, count)
+		VALUES(ticketing_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5}) 
 		</insert>
 		
 		
@@ -121,7 +121,7 @@
 	<select id="ticketConfirm" parameterType="com.Exhibition.home.dto.Ticketing" resultMap="Ticketing2">
 		
 		SELECT 
-			ticketing.mid, ticketing.ticketName,ticketing.rday,ticketing.price,ticketing.count,
+			ticketing.mid, ticketing.ticketName,ticketing.rday,ticketing.price,ticketing.count,ticketing.tnum,
 			emember.mid , emember.mname, emember.memail
 		FROM
 			ticketing
@@ -131,6 +131,10 @@
 		
 	</select>
 		
+		<!-- 티켓 예매 취소하기  -->
+		<delete id="ticketDelete">
+		DELETE FROM ticketing WHERE tnum=#{param1}
+	</delete>
 </mapper>
 	
 	

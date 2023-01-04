@@ -31,14 +31,15 @@ public interface IDao {
 			
 			//예매
 				//예매할 티켓 정보가져오기
-			
 			public Ticket tictekInfo(String tnum);
 				
 				//예매
 			public int ticketing(String mid, String ticketName, String rday, String price , String count);
 				
 				//예매한 티켓 정보 가져오기//조인
+			public List<Ticketing> ticketConfirm(String mid);
 			
-			public Ticketing ticketConfirm(String string);
+			//예매한 티켓 취소하기
+			public void ticketDelete(String tnum);
 			
 }

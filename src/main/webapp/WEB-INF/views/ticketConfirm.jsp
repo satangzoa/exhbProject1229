@@ -22,35 +22,40 @@
             <center>
           
                         <form action="ticketConfirm" method="post" >
-                       
+                       <c:forEach items="${ticketConfirm}" var="ticketRev">
                            <tr>
                               <td><span class="content_text01">아 이 디 : </span></td>
-                              <td><input class="input_type01" type="text" name="mid" value="${ticketConfirm.emember.mid }" readonly="readonly"></td>
+                              <td><input class="input_type01" type="text" name="mid" value="${ticketRev.mid }" readonly="readonly"></td>
+                           </tr>
+                           <tr>
+                              <td><span class="content_text01">예 약 자 : </span></td>
+                              <td><input class="input_type01" type="text" name="mname" value="${ticketRev.memberDto.mname }" readonly="readonly"></td>
                            </tr>
                            <tr>
                               <td><span class="content_text01">전시회 이름 :</span></td>
-                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="ticketName">${ticketConfirm.ticketName }</textarea></td>
+                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="ticketName">${ticketRev.ticketName }</textarea></td>
                            </tr>
                            <tr>
-                              <td><span class="content_text01">이용날짜 : :</span></td>
-                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="rday">${ticketConfirm.rday }</textarea></td>
+                              <td><span class="content_text01">이용날짜  :</span></td>
+                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="rday">${ticketRev.rday }</textarea></td>
                            </tr>
                             <tr>
-                              <td><span class="content_text01">매수 : :</span></td>
-                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="count">${ticketConfirm.count  }</textarea></td>
+                              <td><span class="content_text01">매수  :</span></td>
+                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="count">${ticketRev.count  }</textarea></td>
                            </tr>
                               <tr>
-                              <td><span class="content_text01">1장 당 가격 : :</span></td>
-                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="price">${ticketConfirm.price  }</textarea></td>
+                              <td><span class="content_text01">1장 당 가격 :</span></td>
+                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="price">${ticketRev.price  }</textarea></td>
                            </tr>
                           
                            <tr>
-                           		<td colspan="2" align="center">
-                                	<input class="button_type01" type="button" value="예매취소" onclick="script:window.location='ticketingDelete?mid='$">
-                                	<input class="button_type01" type="button" value="처음으로" onclick="script:window.location='index'">
-                            	</td>
-				
+                                 <td colspan="2" align="center">
+                                   <input class="button_type01" type="button" value="예매취소" onclick="script:window.location='ticketDelete?tnum=${ticketRev.tnum}'">
+                                   <input class="button_type01" type="button" value="처음으로" onclick="script:window.location='index'">
+                               </td>
+            
                            </tr>
+                           </c:forEach>
                         </form>
                      </center>
                   </td>
@@ -63,4 +68,3 @@
    </center>
 <%@ include file="inc/footer.jsp" %>
 </body>
-</html>
