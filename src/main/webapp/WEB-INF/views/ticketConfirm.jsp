@@ -21,8 +21,12 @@
          <td>
             <center>
           
-                        <form action="ticketConfirm" method="post" >
+                        <form action="ticketDelete" method="get" >
                        <c:forEach items="${ticketConfirm}" var="ticketRev">
+                       <tr>
+                              <td><span class="content_text01">예매번호 : </span></td>
+                              <td><input class="input_type01" type="text" name="tnum" value="${ticketRev.tnum }" readonly="readonly"></td>
+                           </tr>
                            <tr>
                               <td><span class="content_text01">아 이 디 : </span></td>
                               <td><input class="input_type01" type="text" name="mid" value="${ticketRev.mid }" readonly="readonly"></td>
@@ -50,7 +54,7 @@
                           
                            <tr>
                                  <td colspan="2" align="center">
-                                    <input class="button_type01" type="button" value="예매취소" onclick="script:window.location='ticketDelete?tnum=${tnum}'">
+                                    <a href="ticketDelete?tnum=${ ticketRev.tnum}">삭제</a>
                                    <input class="button_type01" type="button" value="처음으로" onclick="script:window.location='index'">
                                </td>
             
