@@ -114,7 +114,7 @@
 		<result property="rday" column="rday"/>	
 		<result property="price" column="price"/>	
 		<result property="count" column="count"/>	
-		
+		<result property="tnum" column="tnum"/>	
 		<collection property="memberDto" resultMap="memberDto3"></collection>
 	</resultMap>
 	

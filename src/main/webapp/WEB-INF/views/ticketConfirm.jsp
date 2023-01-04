@@ -54,7 +54,7 @@
                           
                            <tr>
                                  <td colspan="2" align="center">
-                                    <a href="ticketDelete?tnum=${ ticketRev.tnum}">삭제</a>
+                                   <input class="button_type01" type="button" value="예매취소" onclick="script:window.location='ticketDelete?tnum=${ ticketRev.tnum}'">
                                    <input class="button_type01" type="button" value="처음으로" onclick="script:window.location='index'">
                                </td>
             
