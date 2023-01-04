@@ -278,13 +278,18 @@ public class MainController {
 		
 		return "memberModifyOk";
 	}
-	
+
 	
 	@RequestMapping (value ="reservationPage2")
-	public String reservationPage () {
+	public String reservationPage(Model model, HttpSession session) {
 		
-		return "reservationPage2";
+		
+		
+		return "redirect:reservationPage2";
 	}
+	
+
+	
 	
 	@RequestMapping(value = "/buy")
 	public String buy() {
@@ -330,4 +335,35 @@ public class MainController {
 		return "test";
 	}
 	
+//	@RequestMapping(value = "/mypage")
+//	public String memberModify(Model model, HttpSession session) {
+//		
+//		String sessionId = (String) session.getAttribute("memberId");
+//		
+//		IDao dao = sqlSession.getMapper(IDao.class);
+//		
+//		MemberDto memberDto = dao.getMemberInfo(sessionId);
+//		
+//		model.addAttribute("memberDto", memberDto);
+//		
+//		return "memberModify";
+//	}
+	
+//	@RequestMapping (value ="MainStore3")
+//	public String MainStore2(Model model, HttpSession session) {
+//		
+//		String sessionId = (String) session.getAttribute("memberId");
+//		IDao dao = sqlSession.getMapper(IDao.class);
+//		exhi exhi = dao.getInfo(sessionId);
+//		model.addAttribute("exhi", exhi);
+//		
+//		return "MainStore3";
+//	}
+
+	@RequestMapping (value ="review")
+	public String review() {
+		
+		return "review";
+	}
+
 }

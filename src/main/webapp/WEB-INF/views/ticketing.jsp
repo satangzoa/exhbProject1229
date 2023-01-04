@@ -6,14 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>예약페이지</title>
+<title>전시회예매</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/title.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/content.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/reservation.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
-
 
 <script type="text/javascript">
 
@@ -22,7 +21,10 @@
     $(document).ready(function () {
             $.datepicker.setDefaults($.datepicker.regional['ko']); 
             $( "#pickDate" ).datepicker({
-                 changeMonth: true, 
+            	 showOn: "button",
+                 buttonImage:"${pageContext.request.contextPath }/resources/img/r.png",
+                 buttonImageOnly: true,
+            	 changeMonth: true, 
                  changeYear: true,
                  nextText: '다음 달',
                  prevText: '이전 달', 
@@ -69,12 +71,15 @@
 
 </head>
 <body>
-
+<%@ include file="inc/header.jsp" %>
    <center>
+   <form action ="ticketingtest?num=${param.num}" method="post"> 
+   <input type="hidden" value="${ticket.tnum }" name="tnum">
    <table width="75%" border="0" cellspacing="0" cellpadding="20">
       <tr>
          <td class="titlebox">
-            <span class="title01">예매 하기</span>
+
+            <span class="title01">예매 페이지</span>
          </td>
       </tr>
       <tr>
@@ -86,48 +91,38 @@
                      <center>
                      <table border="0" cellspacing="0" cellpadding="10">
                         <form action="reservationOk" method="post" name="reservation_frm">
-                        <input type="hidden" value="${view.qnum }" name="qnum">
                            <tr>
-                              <td><span class="content_text01">회원 아이디</span></td>
-                              <td><input class="input_type01" type="text" name="rid" value="${memberId}"></td>
-                           </tr>
-                            <tr>
-                              <td><span class="content_text01">전시회 이름</span></td>
-                              <td><input class="input_type01" type="text" name="ename" value="" ></td>
+                              <td><span class="content_text01">아이디:</span></td>
+                              <td><input class="input_type01" type="text" name="mid" value="${memberId}"></td>
                            </tr>
                            <tr>
-                              <td><span class="content_text01">전화번호</span></td>
-                              <td><input class="input_type01" type="text" name="rphone">&nbsp;- 제외 입력</td>
+                              <td><span class="content_text01">전시회이름:</span></td>
+                              <td><input class="input_type01" type="text" name="ticketName" value="${ticket.ticketName}"></td>
                            </tr>
-                           <tr>
-                              <td><span class="content_text01">날짜</span></td>
+                           
+                              <td><span class="content_text01">관람날짜:</span>&nbsp;&nbsp;</td>
                               <td>
                                  <input class="input_type01" id="pickDate" type="text" name="rday">&nbsp;
                                  </td>
-                           </tr>
-                           <tr>
-                              <td><span class="content_text01">티켓가격</span></td>
-                              <td><input class="input_type01" type="text" name="eprice" value="" ></td>
-                           </tr>
-                           <tr>
-                              <td><span class="content_text01">매수</span></td>
-                              <td><input class="input_type01" type="text" name="rlist" value="">
-                              <select name="amount">
+                                  <tr>
+                              <td><span class="content_text01">가격:</span></td>
+                              <td><input class="input_type01" type="text" name="price" value="${ticket.price}">
+                         <select name="count">
                                        <!-- <option value="">${i}</option>-->
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
-                                        <option value="">5</option>
-                                        <option value="">6</option>
-                                        <option value="">7</option>
-                                        <option value="">9</option>
-                                        <option value="">10</option>
-                                </select>&nbsp&nbsp장 &nbsp&nbsp</td>
-                           </tr>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                </select>장 &nbsp&nbsp
+									 </td>
+									 
                            <tr>
-                              <td colspan="3" align="center">
-                                 <input class="button_type01" type="button" value="예약완료" onclick="reservationCheck()">&nbsp;&nbsp;
-                                 <input class="button_type01" type="button" value="예약취소" onclick="script:window.location='index'">
+                              <td colspan="2" align="center">
+
+                                 <!-- <input class="button_type01" type="button" value="예매하기"  onclick="location.href='ticketingtest'">&nbsp;&nbsp; -->
+                                 <input class="button_type01" type="submit" value="예매하기"  >&nbsp;&nbsp; 
+                                 <input class="button_type01" type="button" value="예매취소" onclick="script:window.location='index'">
                               </td>
                            </tr>
                         </form>
@@ -139,8 +134,9 @@
             </center>
          </td>
       </tr>
+      </form>
    </table>
    </center>
-
+<%@ include file="inc/footer.jsp" %>
 </body>
 </html>
