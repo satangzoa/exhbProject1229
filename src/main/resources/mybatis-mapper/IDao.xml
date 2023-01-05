@@ -140,6 +140,11 @@
 	<insert id="writeComment">
 		INSERT INTO ment(rnum,rid,rcontent) VALUES(ment_SEQ.nextval,#{param1}, #{param2})
 	</insert>
+	
+	<!-- 별점 찍어보쟈  -->
+	<insert id="writeMent">
+		INSERT INTO ment2(rnum,rating,rid,rcontent) VALUES(ment2_SEQ.nextval,#{param1}, #{param2}, #{param3})
+	</insert>
 </mapper>
 	
 	

@@ -357,25 +357,22 @@ public class MainController {
 
 
 	@RequestMapping (value ="comment")
-	public String comment(HttpServletRequest request, Model model) {
+	public String comment() {
 		
-		String rid = request.getParameter("rid");
-		String rcontent = request.getParameter("rcontent");
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-
-		
-		model.addAttribute("rid", rid);
-		model.addAttribute("rcontent", rcontent);
 		
 		return "comment";
 	}
 	
 
 	@RequestMapping (value ="comment2")
-	public String comment2() {
+	public String comment2(HttpServletRequest request, Model model) {
 		
+		String rid = request.getParameter("rid");
+		String rcontent = request.getParameter("rcontent");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.writeComment(rid, rcontent);
 		return "comment2";
 	}
 	
@@ -384,4 +381,23 @@ public class MainController {
 		
 		return "Han";
 	}
+	
+	@RequestMapping (value ="Han2")
+	public String Han2(HttpServletRequest request, Model model) {
+		
+		String rating = request.getParameter("rating");
+		String rid = request.getParameter("rid");
+		String rcontent = request.getParameter("rcontent");
+	
+//		dao.writeMent(rating,rid,rcontent);
+		
+		return "Han2";
+	}
 }
+
+
+
+
+
+
+

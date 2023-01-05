@@ -28,16 +28,16 @@
 			<form action="comment2" method="get" name="board_frm">
 			<tr>
 				<td><span class="form-contro1">아 이 디 : </span></td>
-				<td><input class="form-control summernote" type="text" name="qid" value="${memberId }" readonly="readonly"></td>
+				<td><input class="form-control summernote" type="text" name="rid" value="${memberId }" readonly="readonly"></td>
 			</tr>
 				<td><span class="form-control">질문내용 : </span></td>
-				<td><textarea class="form-control summernote" rows="5" cols="30" name="qcontent" value="${rcontent }"></textarea></td>
+				<td><textarea class="form-control summernote" rows="5" cols="30" name="rcontent" value="${rcontent }"></textarea></td>
 			</tr>									
 									
 			<tr>
 			<td colspan="2">
 										
-				<input class="btn btn-primary" type="submit" value="리뷰작성" onclick="boardCheck()">&nbsp;&nbsp;
+				<input class="btn btn-primary" type="submit" value="리뷰작성" >&nbsp;&nbsp;
 				<input class="btn btn-primary" type="button" value="글목록" onclick="script:window.location='index'">
 			</td>
 			</tr>

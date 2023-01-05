@@ -45,4 +45,7 @@ public interface IDao {
 	//한 마디 적고가
 			public int writeComment(String rid, String rcontent);
 			
+	//별점 달쟈
+			public int writeMent(String rating,String rid, String rcontent);
+			
 }
