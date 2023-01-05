@@ -48,7 +48,7 @@
 									<td class="board_content02">
 									<a href="questionView?qnum=${qdto.qnum }">
 									<c:choose>
-										<c:when test="${fn:length(qdto.qcontent) > 23 }">
+										<c:when test="${fn:length(qdto.qcontent) > 23 }"><!-- 글자 수자를 제한한다 -->
 											<c:out value="${fn:substring(qdto.qcontent,0,22) }"></c:out>...
 										</c:when>
 										<c:otherwise>

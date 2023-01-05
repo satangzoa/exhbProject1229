@@ -353,7 +353,6 @@ public class MainController {
 		return "review";
 	}
 	
-	
 
 
 	@RequestMapping (value ="comment")
@@ -388,10 +387,17 @@ public class MainController {
 		String rating = request.getParameter("rating");
 		String rid = request.getParameter("rid");
 		String rcontent = request.getParameter("rcontent");
-	
-//		dao.writeMent(rating,rid,rcontent);
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		dao.writeMent(rating,rid,rcontent);
 		
 		return "Han2";
+	}
+	@RequestMapping (value ="Han3")
+	public String Han3() {
+		
+		return "Han3";
 	}
 }
 
