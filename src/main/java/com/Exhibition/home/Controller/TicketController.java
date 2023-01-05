@@ -27,32 +27,31 @@ public class TicketController {
 //		return "ticketing";
 //	}
 	
-
-//	@RequestMapping (value ="/ticketingtest")
-//	public String ticketingtest(HttpServletRequest request,Model model) {
-//		String id = request.getParameter("mid");
-//		String ticketName = request.getParameter("ticketName");
-//		String rday = request.getParameter("rday");
-//		String price = request.getParameter("price");
-//		String count = request.getParameter("count");
-//		System.out.println(id);
-//		System.out.println(ticketName);
-//		System.out.println(rday);
-//		System.out.println(price);
-//		System.out.println(count);
-//		
-//		
-//		IDao dao = sqlSession.getMapper(IDao.class);
-//		int joinFlag = dao.ticketing(id, ticketName,rday,price,count);
-//	
-//		 model.addAttribute("id",id);
-//		 model.addAttribute("ticketName",ticketName);
-//	    model.addAttribute("rday",rday);
-//		 model.addAttribute("price",price);
-//		model.addAttribute("count",count);
-//		
-//		return "ticketingOk";
-//	}
+	@RequestMapping(value="/ticket")
+	public String confirm() {
+		
+		
+		return "ticket";
+	}
+	
+	@RequestMapping(value="/ticketing")
+	public String ticketing(HttpServletRequest request, Model model,HttpSession session) {
+		
+		String sessionId = (String) session.getAttribute("memberId");//아이디 가져오기
+		String tnum = request.getParameter("tnum");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		Ticket ticket =dao.tictekInfo(tnum);
+		
+		model.addAttribute("memberId", sessionId);
+		model.addAttribute("ticket", ticket);
+		model.addAttribute("mid", ticket.getMid());
+		
+		
+		return "ticketing";
+	}
+	
 	
 	@RequestMapping (value ="/ticketingOk")
 	public String ticketingtest(HttpServletRequest request,Model model) {
@@ -82,12 +81,7 @@ public class TicketController {
 //		return "ticketingOk";
 //	}
 //	
-	@RequestMapping(value="/ticket")
-	public String confirm() {
-		
-		
-		return "ticket";
-	}
+	
 	
 //	@RequestMapping(value="/ticketing") 되지만 실제 아이디만 가져오고 티켓이름.티켓가격을 못가져온다
 //	public String ticketing(Model model, HttpSession session) {
@@ -103,23 +97,7 @@ public class TicketController {
 //		return "ticketing";
 //	}
 //	
-	@RequestMapping(value="/ticketing")
-	public String ticketing(HttpServletRequest request, Model model,HttpSession session) {
-		
-		String sessionId = (String) session.getAttribute("memberId");
-		String tnum = request.getParameter("tnum");
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		Ticket ticket =dao.tictekInfo(tnum);
-		
-		model.addAttribute("memberId", sessionId);
-		model.addAttribute("ticket", ticket);
-		model.addAttribute("mid", ticket.getMid());
-		
-		
-		return "ticketing";
-	}
+	
 	
 //	@RequestMapping(value="/ticketConfirm")
 //	public String ticketConfirm(HttpServletRequest request, Model model) {
@@ -142,7 +120,7 @@ public class TicketController {
 		
 		List<Ticketing> ticketConfirmList =dao.ticketConfirm(mid);
 		
-		System.out.println(ticketConfirmList.get(0).getTnum());
+		//System.out.println(ticketConfirmList.get(0).getTnum()); 잘가져오는지 확인한댜
 		
 		model.addAttribute("ticketConfirm", ticketConfirmList);
 		

@@ -42,4 +42,7 @@ public interface IDao {
 			//예매한 티켓 취소하기
 			public void ticketDelete(String tnum);
 			
+	//한 마디 적고가
+			public int writeComment(String rid, String rcontent);
+			
 }

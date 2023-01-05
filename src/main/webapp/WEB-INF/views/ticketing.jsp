@@ -120,7 +120,6 @@
                            <tr>
                               <td colspan="2" align="center">
 
-                                 <!-- <input class="button_type01" type="button" value="예매하기"  onclick="location.href='ticketingtest'">&nbsp;&nbsp; -->
                                  <input class="button_type01" type="submit" value="예매하기"  >&nbsp;&nbsp; 
                                  <input class="button_type01" type="button" value="예매취소" onclick="script:window.location='index'">
                               </td>

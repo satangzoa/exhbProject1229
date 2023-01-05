@@ -135,6 +135,11 @@
 		<delete id="ticketDelete">
 		DELETE FROM ticketing WHERE tnum=#{param1}
 	</delete>
+	
+	<!-- 한마디 적고가 쓰기  -->
+	<insert id="writeComment">
+		INSERT INTO ment(rnum,rid,rcontent) VALUES(ment_SEQ.nextval,#{param1}, #{param2})
+	</insert>
 </mapper>
 	
 	

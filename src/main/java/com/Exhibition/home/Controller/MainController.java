@@ -280,13 +280,6 @@ public class MainController {
 	}
 
 	
-	@RequestMapping (value ="reservationPage2")
-	public String reservationPage(Model model, HttpSession session) {
-		
-		
-		
-		return "redirect:reservationPage2";
-	}
 	
 
 	
@@ -306,12 +299,6 @@ public class MainController {
 	public String MainStore() {
 		
 		return "MainStore";
-	}
-	
-	@RequestMapping(value = "/reservationPage")
-	public String reservationPage2() {
-		
-		return "reservationPage";
 	}
 	
 	@RequestMapping(value = "test")
@@ -365,5 +352,36 @@ public class MainController {
 		
 		return "review";
 	}
+	
+	
 
+
+	@RequestMapping (value ="comment")
+	public String comment(HttpServletRequest request, Model model) {
+		
+		String rid = request.getParameter("rid");
+		String rcontent = request.getParameter("rcontent");
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+
+		
+		model.addAttribute("rid", rid);
+		model.addAttribute("rcontent", rcontent);
+		
+		return "comment";
+	}
+	
+
+	@RequestMapping (value ="comment2")
+	public String comment2() {
+		
+		return "comment2";
+	}
+	
+	@RequestMapping (value ="Han")
+	public String Han() {
+		
+		return "Han";
+	}
 }
