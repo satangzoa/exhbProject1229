@@ -59,13 +59,50 @@ public class ReviewController {
 		return "Han2";
 	}
 	
+
+
+//	@RequestMapping (value ="review3")
+//	public String review3(Model model) {
+//		
+//		IDao dao = sqlSession.getMapper(IDao.class);
+//		
+//		Ment2 ment2 = dao.getReview("3");
+//		model.addAttribute("ment2", ment2);
+//		model.addAttribute("rating",Integer.parseInt(ment2.getRating()));
+////		
+//		
+//		return "review3";
+//	}
+	
+//	@RequestMapping (value ="reviewOk")//리뷰 하나만 가져와서 실패
+//	public String review(Model model) {
+//		
+//		IDao dao = sqlSession.getMapper(IDao.class);
+//		List<Ment2> rList = dao.reviewList("3");//리뷰 하나만 가져온다
+//		
+//		model.addAttribute("rList", rList);
+////		model.addAttribute("rating",Integer.parseInt(rList.get(0)));
+//		//model.addAttribute("rating",Integer.parseInt(rList.getRating()));
+//		return "reviewOk";
+//	}
+	
 	@RequestMapping (value ="review")
 	public String review() {
-		
+	
 		return "review";
 	}
-
-	@RequestMapping (value ="review2")
+	
+	@RequestMapping (value ="reviewList")
+	public String reviewOk(Model model) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		List<Ment2> rList = dao.reviewList();
+		
+		model.addAttribute("rList", rList);
+		return "reviewOk";
+	}
+	
+	@RequestMapping (value ="reviewOk")
 	public String reviewOk(HttpServletRequest request, Model model) {
 		
 		String rating = request.getParameter("rating");
@@ -75,34 +112,8 @@ public class ReviewController {
 		IDao dao = sqlSession.getMapper(IDao.class);
 		
 		dao.writeReview(rating, rid, rcontent);
-		return "review2";
+		return "redirect:reviewList";
 	}
-	
-	@RequestMapping (value ="review3")
-	public String review3(Model model) {
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		Ment2 ment2 = dao.getReview("12");
-		model.addAttribute("ment2", ment2);
-		model.addAttribute("rating",Integer.parseInt(ment2.getRating()));
-//		
-		
-		return "review3";
-	}
-	
-	@RequestMapping (value ="reviewOk")
-	public String review(Model model) {
-		IDao dao = sqlSession.getMapper(IDao.class);
-		List<Ment2> rList = dao.reviewList("rnum");
-		
-		model.addAttribute("rList", rList);
-//		model.addAttribute("rating",Integer.parseInt(rList.get(0)));
-		//model.addAttribute("rating",Integer.parseInt(rList.getRating()));
-		return "reviewOk";
-	}
-	
-	
 }
 
 

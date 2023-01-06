@@ -54,14 +54,14 @@ public interface IDao {
 			public void writeReview(String rating, String rid, String rcontent);
 			
 			//리뷰 가져오기
-			public Ment2 getReview(String rnum);
+			//public Ment2 getReview(String rnum);
 			
 			
-			//리뷰에서 별점 결과 가져오기
-			public List<Ment2> reviewList(String rnum);
+			//리뷰에서 별점 결과 몽땅 가져오기
+			public List<Ment2> reviewList();
 			
 			
-			
+		
 			
 			
 }

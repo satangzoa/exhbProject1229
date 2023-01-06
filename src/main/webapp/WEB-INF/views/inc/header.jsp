@@ -40,7 +40,7 @@
 	              <a class="nav-link" href="event">이벤트</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="review">리뷰</a>
+	              <a class="nav-link" href="reviewList">리뷰</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="comment">한 마디 적고가</a>

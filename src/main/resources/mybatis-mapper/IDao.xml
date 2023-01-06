@@ -152,13 +152,13 @@
 		</insert>
 		
 	
-	<select id="getReview" resultType="com.Exhibition.home.dto.Ment2"> 
+	<!--<select id="getReview" resultType="com.Exhibition.home.dto.Ment2"> 
 		SELECT * FROM ment2 WHERE rnum=#{param1} 
-		</select>
+		</select>-->
 		
 	<!-- 리뷰에서 별점 가져오기!  -->
 		<select id="reviewList" resultType="com.Exhibition.home.dto.Ment2"> 
-		SELECT * FROM  ment2 where rnum=#{param1}
+		SELECT * FROM  ment2 ORDER BY rnum DESC
 		</select>
 </mapper>
 	

@@ -12,8 +12,8 @@
 <body>
 	<%@ include file="inc/header.jsp" %>
 	<center>
-   <table width="75%" border="0" cellspacing="0" cellpadding="20">
-      <div >
+	<center>
+		<div >
 		    <h1>장 줄리안</h1>
 		    <p>장씨는 내 친구</p>
 		</div>
@@ -21,7 +21,7 @@
 		<div >
 		    <img src = 'resources/img/s1.png'  />
 		</div>
-                      <form>
+	 			<form>
                        <c:forEach items="${rList}" var="view">
                        <tr>
                               <td><span class="content_text01">리뷰번호:</span></td>
@@ -32,38 +32,25 @@
                               <td><input class="input_type01" type="text" name="rid" value="${view.rid}"></td>
                            </tr>
                             <tr>
-                             <!--  <td><span class="content_text01"name="rating"  begin="1" end="${view.rating }"  >별점:⭐</span></td>-->
-                        <!--    <td><input class="input_type01" type="text" name="rating"  begin="1" end="${view.rating }" >⭐</td>  -->
-                        
-                    <tr>   <td>  <c:forEach begin="1" end="${view.rating }"> ⭐ </c:forEach></td></tr>
-			
-			
+                              <td><span class="content_text01"name="rating"  begin="1" end="${view.rating }"  >별점:⭐</span></td>
+                            <!--   <td><input class="input_type01" type="text" name="rating"  begin="1" end="${view.rating }" >⭐</td>  -->
                            </tr>
                            
                               <tr>
                               <td><span class="content_text01">리뷰:</span></td>
                               <td><input class="input_type01" type="text" name="rcontent" value="${view.rcontent}"></td>
                            </tr>
-								   </c:forEach>	 
-                             <tr> <td colspan="2" align="center">
+									 
+                              <td colspan="2" align="center">
 
                                  <input class="button_type01" type="button" value="리뷰쓰기"  onclick="script:window.location='review'">&nbsp;&nbsp; 
                                  <input class="button_type01" type="button" value="처음으로" onclick="script:window.location='index'">
                               </td>
                            </tr>
-                        
+                           </c:forEach>
                           
                         </form>
-                          
-                     </center>
-                  </td>
-               </tr>
-            </table>
-            </center>
-         </td>
-      </tr>
-   </table>
-   </center>
+	</center>
 	<%@ include file="inc/footer.jsp" %>
 </body>
 </html>

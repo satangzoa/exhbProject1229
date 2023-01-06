@@ -13,8 +13,18 @@
 <body>
 	<%@ include file="inc/header.jsp" %>
 	<center>
+		<div >
+		    <h1>장 줄리안</h1>
+		    <p>장씨는 내 친구</p>
+		</div>
+		
+		<div >
+		    <img src = 'resources/img/s1.png'  />
+		</div>
+						
+	<center>
 	<table border="0" cellspacing="0" cellpadding="10">
-                        <form action="review2" method="post" >
+                        <form action="reviewOk" method="post" >
                            <tr>
                               <td><span class="content_text01">아이디:</span></td>
                               <td><input class="input_type01" type="text" name="rid" value="${memberId}"></td>
