@@ -42,10 +42,26 @@ public interface IDao {
 			//예매한 티켓 취소하기
 			public void ticketDelete(String tnum);
 			
-	//한 마디 적고가
+		//리뷰다	
+			
+			//한 마디 적고가
 			public int writeComment(String rid, String rcontent);
 			
-	//별점 달쟈
+			//별점 달쟈
 			public int writeMent(String rating,String rid, String rcontent);
+			
+			//리뷰에서 별점 보내보쟝
+			public void writeReview(String rating, String rid, String rcontent);
+			
+			//리뷰 가져오기
+			public Ment2 getReview(String rnum);
+			
+			
+			//리뷰에서 별점 결과 가져오기
+			public List<Ment2> reviewList(String rnum);
+			
+			
+			
+			
 			
 }

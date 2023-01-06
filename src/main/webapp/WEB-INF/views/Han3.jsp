@@ -23,35 +23,11 @@
     <img src = 'resources/img/s1.png'  />
 </div>
 				
-		<center>						
-			<table border="0" cellspacing="0" cellpadding="10">
-			<form action="Han2" method="get" name="board_frm">
-			<tr>
-				<td><span class="form-contro1">아 이 디 : </span></td>
-				<td><input class="form-control summernote" type="text" name="rid" value="${memberId }" readonly="readonly"></td>
+		
+			<c:forEach begin="1" end="${rating }"> <!-- 디비에 저장된 별 불러오는것 -->
+			⭐
+			</c:forEach>
 			</tr>
-			<div name="myform" id="myform" method="post"  >
-			   <fieldset>
-			        <legend>별점</legend>
-			        <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
-			        <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
-			        <input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
-			        <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
-			        <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
-			    </div>
-				<td><span class="form-control">질문내용 : </span></td>
-				<td><textarea class="form-control summernote" rows="5" cols="30" name="rcontent" value="${rcontent }"></textarea></td>
-			</tr>									
-									
-			<tr>
-			<td colspan="2">
-										
-				<input class="btn btn-primary" type="submit" value="리뷰작성" >&nbsp;&nbsp;
-				<input class="btn btn-primary" type="button" value="처음으로" onclick="script:window.location='index'">
-			</td>
-			</tr>
-			</form>							
-			</table>
 	</center>
 <%@ include file="inc/footer.jsp" %>
 </body>

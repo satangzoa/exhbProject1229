@@ -145,6 +145,21 @@
 	<insert id="writeMent">
 		INSERT INTO ment2(rnum,rating,rid,rcontent) VALUES(ment2_SEQ.nextval,#{param1}, #{param2}, #{param3})
 	</insert>
+	
+	<!-- 리뷰에서 별점 보내보장  -->
+		<insert id="writeReview">
+			INSERT INTO ment2(rnum,rating,rid,rcontent) VALUES(ment2_SEQ.nextval,#{param1}, #{param2}, #{param3})
+		</insert>
+		
+	
+	<select id="getReview" resultType="com.Exhibition.home.dto.Ment2"> 
+		SELECT * FROM ment2 WHERE rnum=#{param1} 
+		</select>
+		
+	<!-- 리뷰에서 별점 가져오기!  -->
+		<select id="reviewList" resultType="com.Exhibition.home.dto.Ment2"> 
+		SELECT * FROM  ment2 where rnum=#{param1}
+		</select>
 </mapper>
 	
 	

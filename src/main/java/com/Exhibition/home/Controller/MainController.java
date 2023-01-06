@@ -347,58 +347,7 @@ public class MainController {
 //		return "MainStore3";
 //	}
 
-	@RequestMapping (value ="review")
-	public String review() {
-		
-		return "review";
-	}
 	
-
-
-	@RequestMapping (value ="comment")
-	public String comment() {
-		
-		
-		return "comment";
-	}
-	
-
-	@RequestMapping (value ="comment2")
-	public String comment2(HttpServletRequest request, Model model) {
-		
-		String rid = request.getParameter("rid");
-		String rcontent = request.getParameter("rcontent");
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		dao.writeComment(rid, rcontent);
-		return "comment2";
-	}
-	
-	@RequestMapping (value ="Han")
-	public String Han() {
-		
-		return "Han";
-	}
-	
-	@RequestMapping (value ="Han2")
-	public String Han2(HttpServletRequest request, Model model) {
-		
-		String rating = request.getParameter("rating");
-		String rid = request.getParameter("rid");
-		String rcontent = request.getParameter("rcontent");
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		
-		dao.writeMent(rating,rid,rcontent);
-		
-		return "Han2";
-	}
-	@RequestMapping (value ="Han3")
-	public String Han3() {
-		
-		return "Han3";
-	}
 }
 
 

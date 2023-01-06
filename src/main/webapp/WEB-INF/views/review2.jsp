@@ -18,6 +18,8 @@
     <title>review</title>
     <link rel="stylesheet" href="resources/css/ind.css">
 </head>
+
+리뷰OK!
 <block replace="~{inc/layout :: body(~{this :: main})}">
 	<main class="main" fragment="main">
 		<div class="container">
