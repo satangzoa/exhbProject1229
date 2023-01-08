@@ -41,7 +41,7 @@
                                         <option value="">9</option>
                                         <option value="">10</option>
                                     </c:forEach>
-                                </select>&nbsp&nbsp&nbsp2개 &nbsp&nbsp
+                                </select>&nbsp&nbsp&nbsp개 &nbsp&nbsp
                                 <input type="submit" value="장바구니에 담기" class="btn btn-primary my-2">
                                 
                             </form>

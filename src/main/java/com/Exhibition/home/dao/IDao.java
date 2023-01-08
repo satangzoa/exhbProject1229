@@ -24,7 +24,59 @@ public interface IDao {
 			public int boardAllCount();// 게시판 총 글의 개수 가져오기
 			public BuyDto joinTest(String string);//조인테스트
 			
-	//장바구니
+			//장바구니
+			
+			//예매하기
+			//예매
+				//예매할 티켓 정보가져오기
+			public Ticket tictekInfo(String tnum);
+				
+				//예매
+			public int ticketing(String mid, String ticketName, String rday, String price , String count);
+				
+				//예매한 티켓 정보 가져오기//조인
+			public List<Ticketing> ticketConfirm(String mid);
+			
+			//예매한 티켓 취소하기
+			public void ticketDelete(String tnum);
+			
+		//리뷰다	
+			
+			//한 마디 적고가
+			public int writeComment(String rid, String rcontent);
+			
+			//별점 달쟈
+			public int writeMent(String rating,String rid, String rcontent);
+			
+			//리뷰에서 별점 보내보쟝
+			public void writeReview(String rating, String rid, String rcontent);
+			
+			//리뷰 가져오기
+			//public Ment2 getReview(String rnum);
+			
+			//리뷰에서 별점 결과 몽땅 가져오기
+			public List<Ment2> reviewList();
+			
+			//public ShowDto joinTest(int snum);//조인테스트
+			
+			//메인에 이미지 뜨게하기
+			public ArrayList<ShowDto> showList2();
+			
+			
+			//리뷰에서 별점이랑 좋아요 보내보쟝2
+			public int rivewLike(String rating, String rid, String rcontent);
+			//리뷰에서 별점 결과 몽땅 가져오기2
+			public List<ReviewLike> reviewList2();
+			
+			
+			//좋아요 버튼 클릭
+			public int likement(int mnum, String mid); 
+			// 좋아요 여러번 방지
+			public int likementCheck(String mid,int mnum);	
 			
 			
 }
+
+
+
+

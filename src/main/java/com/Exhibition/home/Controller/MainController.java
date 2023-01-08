@@ -1,18 +1,25 @@
 package com.Exhibition.home.Controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.Exhibition.home.dao.IDao;
 import com.Exhibition.home.dto.*;
@@ -23,17 +30,7 @@ public class MainController {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@RequestMapping (value ="/")
-	public String home () {
-		
-		return "index";
-	}
-
-	@RequestMapping(value = "/index")
-	public String index1() {
-		
-		return "index";
-	}
+	
 	
 	@RequestMapping (value ="join")
 	public String join () {
@@ -280,54 +277,70 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping (value ="reservationPage2")
-	public String reservationPage () {
-		
-		return "reservationPage2";
-	}
-	
 	@RequestMapping(value = "/buy")
 	public String buy() {
 		
 		return "buy";
 	}
 	
-	@RequestMapping(value = "/cart_List")
-	public String cart_List() {
+	@RequestMapping(value = "/store")
+	public String store() {
 		
-		return "cart_List";
+		return "store";
 	}
-	@RequestMapping(value = "/MainStore")
+	@RequestMapping (value ="MainStore")
 	public String MainStore() {
 		
 		return "MainStore";
 	}
 	
-	@RequestMapping(value = "/reservationPage")
-	public String reservationPage2() {
+	
+//	@RequestMapping(value = "test")
+//	public String test(Model model, HttpServletResponse response) throws IOException {
+//			
+//		IDao dao = sqlSession.getMapper(IDao.class);		
+//		
+//		BuyDto buyDto = dao.joinTest("tiger");
+//		
+//		System.out.println(buyDto.getMemberDto().getMid());
+//		
+//		model.addAttribute("buyInfo", buyDto);
+//		
+//		//특정 페이지로 이동전에 자바스크립트 경고창 띄우기
+////		response.setContentType("text/html; charset=UTF-8");
+////        PrintWriter out = response.getWriter();
+////        out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
+////        out.flush(); 
+//		
+//		return "test";
+//	}
+	
+	@RequestMapping (value ="cart")
+	public String cart() {
 		
-		return "reservationPage";
+		return "cart";
 	}
 	
-	@RequestMapping(value = "test")
-	public String test(Model model, HttpServletResponse response) throws IOException {
-			
-		IDao dao = sqlSession.getMapper(IDao.class);		
+	@RequestMapping (value ="/")
+	public String home () {
 		
-		BuyDto buyDto = dao.joinTest("tiger");
-		
-		
-		System.out.println(buyDto.getMemberDto().getMid());
-		
-		model.addAttribute("buyInfo", buyDto);
-		
-		//특정 페이지로 이동전에 자바스크립트 경고창 띄우기
-//		response.setContentType("text/html; charset=UTF-8");
-//        PrintWriter out = response.getWriter();
-//        out.println("<script>alert('로그인 정보를 확인해주세요.'); history.go(-1);</script>");
-//        out.flush(); 
-		
-		return "test";
+		return "redirect:index";
 	}
-	
+
+
+	@RequestMapping (value ="index")
+	   public String home (Model model,HttpServletRequest request,HttpSession session, HttpServletResponse response) throws IOException {
+	      
+	      IDao dao = sqlSession.getMapper(IDao.class);
+	      List<ShowDto> showboardDtos = dao.showList2();
+	      
+//	      ArrayList<ShowDto> eventboardDtos = dao.eventList();
+	      
+//	      ArrayList<FileDto> fileDtolist = dao.fileList(); // 파일리스트 불러오는것 근데 안됨
+	      
+	      model.addAttribute("showList",showboardDtos);
+//	      model.addAttribute("eventList",eventboardDtos);
+	      
+	      return "index";
+	   }
 }

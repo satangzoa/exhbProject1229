@@ -55,7 +55,7 @@
 									
 									<tr>
 										<td colspan="2">
-											<input class="button_type01" type="button" value="수정완료" onclick="joinCheck()">&nbsp;&nbsp;
+											<input class="button_type01" type="button" value="수정완료" onclick="joinCheck()">&nbsp;&nbsp;<!-- joinCheck는 join.js에있는 joinCheck이다 -->
 											<input class="button_type01" type="button" value="수정취소" onclick="script:window.location='index'">
 										</td>
 									</tr>

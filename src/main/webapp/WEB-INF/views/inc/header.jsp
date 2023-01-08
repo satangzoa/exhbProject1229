@@ -31,13 +31,25 @@
 	        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 	          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	            <li class="nav-item">
-	              <a class="nav-link active" aria-current="page" href="reservationPage2">예매</a>
+	              <a class="nav-link active" aria-current="page" href="ticket">예매</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link" href="buy">스토어</a>
+	              <a class="nav-link" href="store">스토어</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link" href="event">이벤트</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href="reviewList">리뷰</a>
+	            </li>
+	            <li class="nav-item">
+	              <a class="nav-link" href="comment">한 마디 적고가</a>
+	            </li>
+	             <li class="nav-item">
+	              <a class="nav-link" href="Han">한줄</a>
+	            </li>
+	             <li class="nav-item">
+	              <a class="nav-link" href="reviewLike">좋아요</a>
 	            </li>
 	            <li class="nav-item">
 	            <% if(sessionId == null) { %>
@@ -54,7 +66,7 @@
           		</li>
           		<% } else { %> 
           		<li class="nav-item">
-             		<a class="nav-link" sec:authorize="isAnonymous()"  href="Ticketing">예매확인/취소</a>
+             		<a class="nav-link" sec:authorize="isAnonymous()"  href="ticketConfirm">예매확인/취소</a>
           		</li>
           		<li class="nav-item">
              		<a class="nav-link" sec:authorize="isAnonymous()"  href="mypage">마이페이지</a>

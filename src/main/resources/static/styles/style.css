@@ -1,0 +1,123 @@
+@font-face {
+    font-family: 'notoSans';
+    src: url('../../NOTOSANSKR-BLACK.OTF');
+}
+
+*{
+    font-family: 'notoSans';
+}
+
+.box{
+    margin: 100px auto;
+    width: 500px;
+    height: 400px;
+
+    background-color: rgb(46, 44, 44);
+    border-radius: 10px;  /*박스의 꼭지점을 둥글게 표현*/
+}
+
+#image{
+    margin-top: 40px;
+    margin-left: -50px;
+
+    width: 220px;
+    border-radius: 10px;
+}
+
+#content, #content2, #content3{
+    color: white;
+}
+#content{
+    margin-top: -300px;
+    margin-left: 210px;
+
+    font-size: 12px;
+    opacity: 0.5;  /*투명도 설정*/
+}
+#content2{
+    margin-top: 20px;
+    margin-left: 210px;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.wrapper, .wrapper2{
+    display: flex;
+
+    padding: 30px;
+    max-width: 1170px;
+    flex-shrink: 0;
+}
+.circle, .circle2{
+    border-radius: 50%;
+    border: 1px solid white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: calc(2em / 0.7);
+    height: calc(2em / 0.7);
+}
+.wrapper{
+    margin-top: 160px;
+    margin-left: -70px;
+}
+.circle{
+    margin-top: -100px;
+    margin-left: 250px;
+}
+.wrapper2{
+    margin-top: -60px;
+}
+.circle2{
+    margin-top: -100px;
+    margin-left: 250px;
+}
+
+#content3{
+    margin-top: -60px;
+    margin-left: 210px;
+    font-size: 12px;
+}
+
+.star-rating {
+    margin-top: 20px;
+    margin-left: 200px;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    justify-content: space-around;
+    padding: 0 0.2em;
+    text-align: center;
+    width: 5.5em;
+}
+.star-rating input {
+    display: none;
+}
+.star-rating label {
+    display: inline-block;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../images/icon_empty_star.png');
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    cursor: pointer;
+}
+.star-rating :checked ~ label {
+    background-image: url('../../images/icon_star.png');
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    background-image: url('../../images/icon_star.png');
+}
+
+#star-remove{
+    margin-top: -30px;
+    margin-left: 420px;
+    width: 20px;
+}

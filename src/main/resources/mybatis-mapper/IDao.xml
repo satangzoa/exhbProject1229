@@ -4,8 +4,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-	<mapper namespace="com.Exhibition.home.dao.IDao">
-	
+<mapper namespace="com.Exhibition.home.dao.IDao">
 		<!-- 멤버관련 SQL -->
 		<insert id="memberJoin">
 			INSERT INTO emember(mid, mpw, mname, memail) VALUES(#{param1},#{param2},#{param3},#{param4})
@@ -69,7 +68,7 @@
 		<result property="count" column="count"/>	
 		
 		<collection property="memberDto" resultMap="memberDto2"></collection>
-		<!-- BoardDto에 있는 private MemberDto memberDto;를 가져온것과 같다 -->
+		<!-- BuyDto에 있는 private MemberDto memberDto;를 가져온것과 같다 -->
 	</resultMap>
 	
 	<select id="joinTest" parameterType="com.Exhibition.home.dto.BuyDto" resultMap="BuyDto2">
@@ -83,12 +82,171 @@
 			ON cart.mid = emember.mid
 		WHERE cart.mid=#{id}
 		
+	</select>
+		
+		<!-- 예매 -->
+		
+	
+		<select id="tictekInfo" resultType="com.Exhibition.home.dto.Ticket"> 
+		SELECT * FROM ticket WHERE tnum=#{param1} 
+		</select>
+		
+		<!-- 티켓 예매하기  -->
+		<insert id="ticketing">
+		insert into ticketing(tnum,mid, ticketName, rday, price, count)
+		VALUES(ticketing_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5}) 
+		</insert>
 		
 		
+		<!-- 티켓 예매 확인정보 가져오기-->
+		<resultMap type="com.Exhibition.home.dto.MemberDto" id="memberDto3">
+		<result property="mid" column="mid"/>
+		<!--  column아이디는 테이블 아이디 -->
+		<result property="mpw" column="mpw"/>
+		<result property="mname" column="mname"/>
+		<result property="memail" column="memail"/>	
+		<result property="mdate" column="mdate"/>	
+	</resultMap>
+	
+	<resultMap type="com.Exhibition.home.dto.Ticketing" id="Ticketing2">
+		<result property="mid" column="mid"/>
+		<result property="ticketName" column="ticketName"/>
+		<result property="rday" column="rday"/>	
+		<result property="price" column="price"/>	
+		<result property="count" column="count"/>	
+		<result property="tnum" column="tnum"/>	
+		<collection property="memberDto" resultMap="memberDto3"></collection>
+	</resultMap>
+	
+	<select id="ticketConfirm" parameterType="com.Exhibition.home.dto.Ticketing" resultMap="Ticketing2">
+		
+		SELECT 
+			ticketing.mid, ticketing.ticketName,ticketing.rday,ticketing.price,ticketing.count,ticketing.tnum,
+			emember.mid , emember.mname, emember.memail
+		FROM
+			ticketing
+			JOIN emember
+			ON ticketing.mid = emember.mid
+		WHERE ticketing.mid=#{mid}
 		
 	</select>
 		
+		<!-- 티켓 예매 취소하기  -->
+		<delete id="ticketDelete">
+		DELETE FROM ticketing WHERE tnum=#{param1}
+	</delete>
+	
+	<!-- 한마디 적고가 쓰기  -->
+	<insert id="writeComment">
+		INSERT INTO ment(rnum,rid,rcontent) VALUES(ment_SEQ.nextval,#{param1}, #{param2})
+	</insert>
+	
+	<!-- 별점 찍어보쟈  -->
+	<insert id="writeMent">
+		INSERT INTO ment2(rnum,rating,rid,rcontent) VALUES(ment2_SEQ.nextval,#{param1}, #{param2}, #{param3})
+	</insert>
+	
+	<!-- 리뷰에서 별점 보내보장  -->
+		<insert id="writeReview">
+			INSERT INTO ment2(rnum,rating,rid,rcontent) VALUES(ment2_SEQ.nextval,#{param1}, #{param2}, #{param3})
+		</insert>
+		
+	
+	<!--<select id="getReview" resultType="com.Exhibition.home.dto.Ment2"> 
+		SELECT * FROM ment2 WHERE rnum=#{param1} 
+		</select>-->
+		
+	<!-- 리뷰에서 별점 가져오기!  -->
+		<select id="reviewList" resultType="com.Exhibition.home.dto.Ment2"> 
+		SELECT * FROM  ment2 ORDER BY rnum DESC
+		</select>
+		
+			<!--파일 조인  -->
+		<resultMap type="com.Exhibition.home.dto.FileDto" id="FileDto2">
+			<result property="filenum" column="filenum"/>
+			<result property="sboardnum" column="sboardnum"/>
+			<result property="fileoriname" column="fileoriname"/>
+			<result property="filename" column="filename"/>
+			<result property="fileextension" column="fileextension"/>	
+			<result property="fileurl" column="fileurl"/>	
+		</resultMap>
+		
+		<resultMap type="com.Exhibition.home.dto.ShowDto" id="ShowDto2">
+			<result property="snum" column="snum"/>
+			<result property="stitle" column="stitle"/>
+			<result property="slocation" column="slocation"/>
+			<result property="sdday" column="sdday"/>	
+			<result property="sage" column="sage"/>	
+			<result property="stime" column="stime"/>	
+			<result property="sage" column="sage"/>	
+			<result property="sprice" column="sprice"/>	
+			<result property="userid" column="userid"/>	
+			<result property="filecount" column="filecount"/>	
+			
+			<collection property="fileDto" resultMap="FileDto2"></collection>
+		</resultMap>
+	
+		<!--<select id="joinTest" parameterType="com.Exhibition.home.dto.ShowDto" resultMap="ShowDto2">
+		
+		SELECT 
+			SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,
+			SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
+			from
+			SHOWTBL
+			JOIN SHOWFILES
+			ON SHOWTBL.snum = SHOWFILES.sboardnum
+		WHERE SHOWTBL.snum=#{param1}
+		
+	</select> -->
+	
+	<!--메인화면 이미지 뜨게하자 -->
+		<select id="showList2" parameterType="com.Exhibition.home.dto.ShowDto" resultMap="ShowDto2"> 
+		SELECT 
+			SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,
+			SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
+			from
+			SHOWTBL
+			JOIN SHOWFILES
+			ON SHOWTBL.snum = SHOWFILES.sboardnum
+		</select>
+		
+		<!-- 리뷰에서 별점 보내보장2  -->
+		<insert id="rivewLike">
+			INSERT INTO ment3(rnum, rating ,rid, rcontent) 
+			VALUES(ment3_SEQ.nextval,#{param1}, #{param2}, #{param3})
+		</insert>
+		<!-- 리뷰에서 별점 가져오기!2  -->
+		<select id="reviewList2" resultType="com.Exhibition.home.dto.Ment2"> 
+		SELECT * FROM  ment3 ORDER BY rnum DESC
+		</select>
+		
+		<!-- 좋아요 조인 -->
+	
+<!--	<resultMap type="com.Exhibition.home.dto.ReviewLike" id="ReviewLike2">
+		<result property="rnum" column="rnum"/> -
+		<result property="rating" column="rating"/>
+		<result property="rid" column="rid"/>
+		<result property="rcontent" column="rcontent"/>	
+	</resultMap>
+	
+	<resultMap type="com.Exhibition.home.dto.ReviewLikeDa" id="ReviewLikeDa2">
+		<result property="lnum" column="lnum"/>
+		<result property="mnum" column="mnum"/>
+		<result property="mid" column="mid"/>
+		</resultMap>
+		<collection property="reviewlike" resultMap="reviewlike2"></collection>-->
+		
+	<insert id="likement">
+		INSERT INTO likement(lnum, mnum, mid) VALUES(mentlike_seq.nextval,${param1},#{param2})
+	</insert>
+	<select id="likementCheck" resultType="int">
+		SELECT count(*) FROM likement WHERE mid=#{param1} AND mnum=${param2}
+	</select>
+	
 	</mapper>
+	
+		
+
 	
 	
 	

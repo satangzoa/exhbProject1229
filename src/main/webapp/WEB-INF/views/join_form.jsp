@@ -29,7 +29,7 @@
 				<input type="text" name="memail" class="form-control">
 			</div>
 			<input type="submit" value="회원가입" class="btn btn-primary my-2" onclick="joinCheck()">
-			<input type="text" value="취소" class="btn btn-primary" onclick="" style="width:60px">
+			<input type="text" value="취소" class="btn btn-primary" onclick="history.go(-1);" style="width:60px">
 		</form>
 	</div>		
 	<%@ include file="inc/footer.jsp" %>

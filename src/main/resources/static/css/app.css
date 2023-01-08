@@ -1,0 +1,140 @@
+@import "reset.css";
+
+#app {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+.movie-container {
+  display: flex;
+  align-items: center;
+  width: 672px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.movie {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 64px;
+}
+
+.poster-container {
+  position: absolute;
+  width: 281px;
+  height: 396px;
+  left: -64px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.content {
+  width: 608px;
+  height: 500px;
+  background: #333;
+  border-radius: 15px;
+  color: #fff;
+  padding: 64px 0 0 266px;
+  box-sizing: border-box;
+}
+
+.content-type span {
+  color: #bdbdbd;
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 500;
+}
+
+.content-type span + span::before {
+  display: inline-block;
+  content: "";
+  width: 2px;
+  height: 13px;
+  margin: 0 5px 0px 5px;
+  background: #bdbdbd;
+}
+
+.content-title {
+  margin: 13px 0 114px 0;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 46px;
+}
+
+.content-favorite {
+  display: flex;
+  margin-bottom: 22px;
+}
+
+.content-favorite button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  border: 2px solid #fff;
+  border-radius: 100%;
+}
+
+.button-recommend .icon-thumbs-up {
+  width: 23.8px;
+  height: 23.8px;
+  text-indent: -9999px;
+  overflow: hidden;
+  background: center / contain url(../images/icon_thumbs_up.png) no-repeat;
+}
+
+.button-recommend.on {
+  background-color: #2f80ed;
+}
+
+.button-recommend.on .icon-thumbs-up {
+  background-image: url(../images/icon_thumbs_up_fill.png);
+}
+
+.button-heart .icon-heart {
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 23.8px;
+  height: 23.8px;
+  background: center / contain url(../images/icon_heart.png) no-repeat;
+}
+
+.button-heart.on {
+  background-color: #eb5757;
+}
+
+.button-heart.on .icon-heart {
+  background-image: url(../images/icon_heart_fill.png);
+}
+
+.star-average {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.star-point-container {
+  display: flex;
+  align-items: center;
+}
+
+.star-background {
+  display: flex;
+  cursor: pointer;
+}
+
+.star-background img {
+  width: 51px;
+}
+
+.icon-remove-star {
+  display: none;
+  width: 22px;
+  height: 22px;
+  margin-left: 11px;
+}

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>INDEX Napmkmk</title>
+<title>회원가입</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/title.css"> 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/content.css"> 
 </head>
