@@ -61,7 +61,7 @@ public class BoardController {
 //		return "questionList";
 //	}
 	
-	@RequestMapping(value = "event")
+	@RequestMapping(value = "event")//게시판
 	public String list( Model model, Criteria cri,HttpServletRequest request) {//페이징해야하므로 Criteria 가져온다
 		
 		int pageNumInt=0;
@@ -175,7 +175,30 @@ public class BoardController {
 		return "boardList";
 	}
 	
-	
+	@RequestMapping(value = "search_list")
+	public String search_list(HttpServletRequest request, Model model) {
+		
+		String searchOption = request.getParameter("searchOption");
+		//title, content, writer 3개중에 한개의 값을 저장
+		String searchKey = request.getParameter("searchKey");
+		//유저가 입력한 제목/내용/글쓴이 에 포함된 검색 키워드 낱말
+		IDao dao = sqlSession.getMapper(IDao.class);
+		
+		ArrayList<ShowDto> boardDtos = null;
+		
+		if(searchOption.equals("stitle")) {
+			boardDtos = dao.ShowSearchTitleList(searchKey);			
+		} else if(searchOption.equals("slocation")) {
+			boardDtos = dao.ShowSearchLocarionList(searchKey);
+		} else if(searchOption.equals("sprice")) {
+			boardDtos = dao.ShowSearchSpriceList(searchKey);
+		} 	
+		
+		
+		model.addAttribute("boardList", boardDtos);
+		
+		return "boardList";
+	}
 	
 	
 }
