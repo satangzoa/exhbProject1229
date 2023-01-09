@@ -71,7 +71,7 @@
 									<input type="hidden" name = "id" value="${mid} }">
 									<input type="hidden" name = "ticketName" value="${ticketName}">
 									<input type="hidden" name = "selectedDate" value="${selectedDate}">
-												<input type="hidden" name = "ticketName" value="${count}">
+												<input type="hidden" name = "ticketName" value="${ticketName}">
 									<tr>
 									
 									<tr>

@@ -37,11 +37,11 @@
                            </tr>
                            <tr>
                               <td><span class="content_text01">전시회 이름 :</span></td>
-                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="ticketName">${ticketRev.ticketName }</textarea></td>
+                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="stitle">${ticketRev.stitle }</textarea></td>
                            </tr>
                            <tr>
                               <td><span class="content_text01">이용날짜  :</span></td>
-                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="rday">${ticketRev.rday }</textarea></td>
+                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="sdday">${ticketRev.sdday }</textarea></td>
                            </tr>
                             <tr>
                               <td><span class="content_text01">매수  :</span></td>
@@ -49,7 +49,7 @@
                            </tr>
                               <tr>
                               <td><span class="content_text01">1장 당 가격 :</span></td>
-                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="price">${ticketRev.price  }</textarea></td>
+                              <td colspan="2"><textarea class="textarea_text01" rows="5" cols="30" name="sprice">${ticketRev.sprice  }</textarea></td>
                            </tr>
                           
                            <tr>
