@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.Exhibition.home.dao.IDao">
+<select id="showList" resultType="com.Exhibition.home.dto.ShowDto"> <!-- ROWNUM 오라클에 자동생성되는 번호 A와 PAGE는 가상의 필드-->
+		SELECT * FROM
+			(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM <!--소수점 버림 함수 Floor를 사용 amount는 5 -->
+			FROM
+			(SELECT * FROM SHOWTBL ORDER BY snum DESC)A)
+		WHERE PAGE = #{pageNum}
+		</select>
+
+<!-- 공연 검색하기  
+	<select id="ShowSearchTitleList" resultType="com.Exhibition.home.dto.ShowDto">
+		SELECT * FROM SHOWTBL WHERE stitle LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+	</select>
+	
+	<select id="ShowSearchLocarionList" resultType="com.Exhibition.home.dto.ShowDto">
+		SELECT * FROM SHOWTBL WHERE slocation LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+	</select>
+	
+	<select id="ShowSearchSpriceList" resultType="com.Exhibition.home.dto.ShowDto">
+		SELECT * FROM SHOWTBL WHERE sprice LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+	</select> -->
+	
+</mapper>

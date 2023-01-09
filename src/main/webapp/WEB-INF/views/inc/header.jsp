@@ -37,6 +37,9 @@
 	              <a class="nav-link" href="store">스토어</a>
 	            </li>
 	            <li class="nav-item">
+	              <a class="nav-link" href="boardList">공연검색</a>
+	            </li>
+	            <li class="nav-item">
 	              <a class="nav-link" href="event">이벤트</a>
 	            </li>
 	            <li class="nav-item">

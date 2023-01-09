@@ -8,6 +8,24 @@
 <body>
 
 	<%@ include file="inc/header.jsp" %>
+	<center>
+	<section id="main">
+        <h2 id="board_title">자유게시판</h2>
+        <div id="total_search">
+          <form action="search_list">
+          <div id="search">
+            <div id="search_select">
+              <select name="searchOption">
+                <option value="stitle">공연제목</option>
+                <option value="slocation">공연위치장소</option>
+                <option value="sprice">공연가격</option>
+              </select>
+            </div>
+            <div id="search_input"><input type="text" name="searchKey"></div>
+          </div>
+          </form>
+        </div> <!-- total search 끝 -->
+	 </center>
 <div id="wrapper" >		
    	<!-- tab 메뉴-->
    	<div>
@@ -88,6 +106,8 @@
 			   		</ul>
 		   	</div>
 		   	
+		  
+        
 		   	<div id="goodsWrap" class="mgt50">
 			   	<h3>굿즈판매</h3>
 			   	<div class="goodslist">

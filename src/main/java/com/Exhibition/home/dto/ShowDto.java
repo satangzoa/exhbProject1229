@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ShowDto {
+public class ShowDto {//SHOWTBL
 
 	private int snum; //번호
 	private String stitle; //공연제목

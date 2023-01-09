@@ -236,11 +236,24 @@
 		</resultMap>
 		<collection property="reviewlike" resultMap="reviewlike2"></collection>-->
 		
-	<insert id="likement">
+<!--	<insert id="likement">
 		INSERT INTO likement(lnum, mnum, mid) VALUES(mentlike_seq.nextval,${param1},#{param2})
 	</insert>
 	<select id="likementCheck" resultType="int">
 		SELECT count(*) FROM likement WHERE mid=#{param1} AND mnum=${param2}
+		</select>-->
+	
+	<!-- 공연 검색하기 -->	
+	<select id="ShowSearchTitleList" resultType="com.Exhibition.home.dto.ShowDto">
+		SELECT * FROM SHOWTBL WHERE stitle LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+	</select>
+	
+	<select id="ShowSearchLocarionList" resultType="com.Exhibition.home.dto.ShowDto">
+		SELECT * FROM SHOWTBL WHERE slocation LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+	</select>
+	
+	<select id="ShowSearchSpriceList" resultType="com.Exhibition.home.dto.ShowDto">
+		SELECT * FROM SHOWTBL WHERE sprice LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
 	</select>
 	
 	</mapper>

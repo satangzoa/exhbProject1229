@@ -70,11 +70,17 @@ public interface IDao {
 			
 			
 			//좋아요 버튼 클릭
-			public int likement(int mnum, String mid); 
+		//	public int likement(int mnum, String mid); 
 			// 좋아요 여러번 방지
-			public int likementCheck(String mid,int mnum);	
+		//	public int likementCheck(String mid,int mnum);	
 			
+			//공연 검색 관련
+			public ArrayList<ShowDto> ShowSearchTitleList(String searchKey);
+			public ArrayList<ShowDto> ShowSearchLocarionList(String searchKey);
+			public ArrayList<ShowDto> ShowSearchSpriceList(String searchKey);
 			
+			//공연정보 가져오기
+			public List<ShowDto> showList(Criteria cri);
 }
 
 
