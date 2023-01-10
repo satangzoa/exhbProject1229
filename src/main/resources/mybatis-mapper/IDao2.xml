@@ -13,17 +13,6 @@
 		WHERE PAGE = #{pageNum}
 		</select>
 
-<!-- 공연 검색하기  
-	<select id="ShowSearchTitleList" resultType="com.Exhibition.home.dto.ShowDto">
-		SELECT * FROM SHOWTBL WHERE stitle LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
-	</select>
-	
-	<select id="ShowSearchLocarionList" resultType="com.Exhibition.home.dto.ShowDto">
-		SELECT * FROM SHOWTBL WHERE slocation LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
-	</select>
-	
-	<select id="ShowSearchSpriceList" resultType="com.Exhibition.home.dto.ShowDto">
-		SELECT * FROM SHOWTBL WHERE sprice LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
-	</select> -->
+
 	
 </mapper>

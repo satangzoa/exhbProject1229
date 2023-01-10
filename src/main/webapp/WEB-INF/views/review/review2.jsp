@@ -11,9 +11,9 @@
 <title>리뷰다</title>
 </head>
 <body>
-	<%@ include file="inc/header.jsp" %>
+	<%@ include file="../inc/header.jsp" %>
 	리뷰성공!
 	
-	<%@ include file="inc/footer.jsp" %>
+	<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

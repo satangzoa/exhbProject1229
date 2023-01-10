@@ -12,6 +12,7 @@ public class ReviewLikeDa {//mentlike
 	private int lnum;//시퀀스 자동생성번호
 	private int mnum;//게시판 글 번호
 	private String mid;//리뷰쓴사람아이디
-
+	private String liker;//좋아요 여부
+	
 	private ReviewLike reviewlike;
 }

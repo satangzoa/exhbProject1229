@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="inc/header.jsp" %>
+	<%@ include file="../inc/header.jsp" %>
 	<div id="wrapper">
 		<h5>회원가입</h5>
 		<form action="joinOk" method="post" name="join_frm">
@@ -32,6 +32,6 @@
 			<input type="text" value="취소" class="btn btn-primary" onclick="history.go(-1);" style="width:60px">
 		</form>
 	</div>		
-	<%@ include file="inc/footer.jsp" %>
+	<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

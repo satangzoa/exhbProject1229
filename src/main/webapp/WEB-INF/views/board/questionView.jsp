@@ -10,7 +10,7 @@
 <title></title>
 </head>
 <body>	
-	<%@ include file="inc/header.jsp" %>
+	<%@ include file="../inc/header.jsp" %>
 	<center>
 	<table width="75%" border="0" cellspacing="0" cellpadding="20">
 		<tr>
@@ -74,6 +74,6 @@
 		</tr>
 	</table>
 	</center>
-	<%@ include file="inc/footer.jsp" %>
+	<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<%@ include file="inc/header.jsp" %>
+<%@ include file="../inc/header.jsp" %>
 <div class="container">
     <h2 class="my-3 border-bottom pb-2">상품 상세정보</h2>
            
@@ -53,7 +53,7 @@
                   <input type="submit" value="상품목록" class="btn btn-primary my-2">
            
     </div>
-    <%@ include file="inc/footer.jsp" %>
+    <%@ include file="../inc/footer.jsp" %>
 </body>
 </html>
 

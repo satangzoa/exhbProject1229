@@ -8,7 +8,7 @@
 <title>상품 판매</title>
 </head>
 <body>
-<%@ include file="inc/header.jsp" %>
+<%@ include file="../inc/header.jsp" %>
 <div class="container">
 	<h2 class="my-3 border-bottom pb-2">이것저것  판매</h2>
 	
@@ -57,6 +57,6 @@
   </tbody>
 </table>
 </div>
-<%@ include file="inc/footer.jsp" %>
+<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

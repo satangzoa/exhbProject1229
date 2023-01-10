@@ -12,7 +12,7 @@
 <title>검색해보쟈</title>
 </head>
 <body>
-	<%@ include file="inc/header.jsp" %>
+	<%@ include file="../inc/header.jsp" %>
 	<center>
 	
 	<table width="90%" border="0" cellspacing="0" cellpadding="10">
@@ -102,6 +102,6 @@
 		</tr>
 	</table>
 	</center>
-	<%@ include file="inc/footer.jsp" %>
+	<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

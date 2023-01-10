@@ -71,7 +71,7 @@
 
 </head>
 <body>
-<%@ include file="inc/header.jsp" %>
+<%@ include file="../inc/header.jsp" %>
    <center>
    <form action ="ticketingOk?num=${param.num}" method="post"> 
    <input type="hidden" value="${ticket.tnum }" name="tnum">
@@ -136,6 +136,6 @@
       </form>
    </table>
    </center>
-<%@ include file="inc/footer.jsp" %>
+<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

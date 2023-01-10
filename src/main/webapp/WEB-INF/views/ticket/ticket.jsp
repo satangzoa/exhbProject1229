@@ -10,7 +10,7 @@
 
 </head>
 <body>
-<%@ include file="inc/header.jsp" %>
+<%@ include file="../inc/header.jsp" %>
 <div align="center">
 	<h3>[전시회 티켓 예매]</h3>
 	<table border="1">
@@ -29,6 +29,6 @@
 		
 	</table>
 </div>
-<%@ include file="inc/footer.jsp" %>
+<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

@@ -133,7 +133,7 @@ public class ReviewController {
 	}
 
 	
-	@RequestMapping (value ="reviewLike2")
+	@RequestMapping (value ="reviewLike2")//리뷰보내고 별점 가져온다
 	public String reviewLike2(HttpServletRequest request, Model model) {
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
@@ -168,27 +168,35 @@ public class ReviewController {
 	}
 	
 
-//	@RequestMapping(value = "commentlike")좋아요 확인하기
-//	public String commentlike(HttpServletRequest request, HttpSession session) {
-//		
-//		IDao dao = sqlSession.getMapper(IDao.class);
-//		String mid = (String) session.getAttribute("memberId");
-//		int lnum=Integer.parseInt(request.getParameter("lnum"));
-//		int mnum = Integer.parseInt(request.getParameter("mnum")); 
-//		
-//		int checkCount = dao.likement(mnum, mid);
-//		
-//		if(checkCount != 0) {
-//			return String.format("redirerct:reviewLike?mnum=%s",mnum);
-//		
-//		}else {
-//			
-//			dao.likement(mnum, mid);
-//			
-//		}
-//		return String.format("redirerct:reviewLike2?mnum=%s",mnum);
-//	}
+	@RequestMapping(value = "commentlike")//좋아요 확인하기
+		public String commentlike(HttpServletRequest request, HttpSession session) {
+		
+		IDao dao = sqlSession.getMapper(IDao.class);
+		String mid = (String) session.getAttribute("memberId");
+		int lnum=Integer.parseInt(request.getParameter("lnum"));
+		int mnum = Integer.parseInt(request.getParameter("mnum")); 
+		
+		int checkCount = dao.likementCheck(mid, mnum);
 	
+	
+		if(checkCount != 0) {
+			return String.format("redirerct:reviewLike?mnum=%s",mnum);
+		
+		}else {
+			
+			dao.likement(mnum, mid);
+			
+		}
+		return String.format("redirerct:reviewLike2?mnum=%s",mnum);
+	}
+	
+
+	@RequestMapping (value ="like")
+	public String like() {
+		
+		
+		return "like";
+	}
 	
 }
 

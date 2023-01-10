@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.Exhibition.home.dao.IDao">
+
+<!-- 멤버관련 SQL -->
+		<insert id="memberJoin">
+			INSERT INTO emember(mid, mpw, mname, memail) VALUES(#{param1},#{param2},#{param3},#{param4})
+		</insert>
+		<select id="checkId"  resultType="int" >
+			SELECT COUNT(*) FROM emember WHERE mid=#{param1}
+		</select>
+		<select id="checkIdAndPW"  resultType="int" >
+			SELECT COUNT(*) FROM emember WHERE mid=#{param1} AND mpw=#{param2}
+		</select>
+		<select id="getMemberInfo" resultType="com.Exhibition.home.dto.MemberDto">
+			SELECT * FROM emember WHERE mid=#{param1}
+		</select>
+		<update id="memberModify">
+			UPDATE emember SET mpw=#{param2}, mname=#{param3}, memail=#{param4}  WHERE mid=#{param1}
+		</update>
+		
+		
+		<!-- 게시판 -->
+	<insert id="writeQuestion">
+		INSERT INTO ABOARD(qnum, qid, qname, qcontent, qemail) VALUES(ABOARD_SEQ.nextval,#{param1}, #{param2}, #{param3}, #{param4})
+	</insert>
+	
+	<select id="questionList" resultType="com.Exhibition.home.dto.QBoardDto"> <!-- ROWNUM 오라클에 자동생성되는 번호 A와 PAGE는 가상의 필드-->
+		SELECT * FROM
+			(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM <!--소수점 버림 함수 Floor를 사용 amount는 5 -->
+			FROM
+			(SELECT * FROM ABOARD ORDER BY qnum DESC)A)
+		WHERE PAGE = #{pageNum}
+		</select>
+	
+	<select id="questionView" resultType="com.Exhibition.home.dto.QBoardDto">
+		SELECT * FROM ABOARD WHERE qnum=#{param1}
+	</select>	
+	
+		<update id="questionModify">
+	 	update ABOARD set qname=#{param2},qcontent=#{param3}, qemail=#{param4} where qnum=#{param1}
+	</update>
+	
+	<delete id="questionDelete">
+		DELETE FROM ABOARD WHERE qnum=#{param1}
+	</delete>
+	
+	 <select id="boardAllCount" resultType="int">
+		select count(*) from ABOARD 
+	</select> 
+	
+	<!-- 스토어 -->
+	
+	<resultMap type="com.Exhibition.home.dto.MemberDto" id="memberDto2">
+		<result property="mid" column="mid"/>
+		<!--  column아이디는 테이블 아이디 -->
+		<result property="mpw" column="mpw"/>
+		<result property="mname" column="mname"/>
+		<result property="memail" column="memail"/>	
+		<result property="mdate" column="mdate"/>	
+	</resultMap>
+	
+	<resultMap type="com.Exhibition.home.dto.BuyDto" id="BuyDto2">
+		<result property="cartId" column="cartId"/>
+		<result property="mid" column="mid"/>
+		<result property="productId" column="productId"/>
+		<result property="count" column="count"/>	
+		
+		<collection property="memberDto" resultMap="memberDto2"></collection>
+		<!-- BuyDto에 있는 private MemberDto memberDto;를 가져온것과 같다 -->
+	</resultMap>
+	
+	<select id="joinTest" parameterType="com.Exhibition.home.dto.BuyDto" resultMap="BuyDto2">
+		
+		SELECT 
+			cart.cartId, cart.productId, cart.count, cart.mid,
+			emember.mpw , emember.mname, emember.memail
+		FROM
+			cart
+			JOIN emember
+			ON cart.mid = emember.mid
+		WHERE cart.mid=#{id}
+		
+	</select>
+		
+		
+		<!-- 예매 -->
+		
+	
+		<select id="tictekInfo" resultType="com.Exhibition.home.dto.Ticket"> 
+		SELECT * FROM ticket WHERE tnum=#{param1} 
+		</select>
+		
+		<!-- 티켓 예매하기  -->
+		<insert id="ticketing">
+		insert into ticketing(tnum,mid, ticketName, rday, price, count)
+		VALUES(ticketing_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5}) 
+		</insert>
+		
+		
+		<!-- 티켓 예매 확인정보 가져오기-->
+		<resultMap type="com.Exhibition.home.dto.MemberDto" id="memberDto3">
+		<result property="mid" column="mid"/>
+		<!--  column아이디는 테이블 아이디 -->
+		<result property="mpw" column="mpw"/>
+		<result property="mname" column="mname"/>
+		<result property="memail" column="memail"/>	
+		<result property="mdate" column="mdate"/>	
+	</resultMap>
+	
+	<resultMap type="com.Exhibition.home.dto.Ticketing" id="Ticketing2">
+		<result property="mid" column="mid"/>
+		<result property="ticketName" column="ticketName"/>
+		<result property="rday" column="rday"/>	
+		<result property="price" column="price"/>	
+		<result property="count" column="count"/>	
+		<result property="tnum" column="tnum"/>	
+		<collection property="memberDto" resultMap="memberDto3"></collection>
+	</resultMap>
+	
+	<select id="ticketConfirm" parameterType="com.Exhibition.home.dto.Ticketing" resultMap="Ticketing2">
+		
+		SELECT 
+			ticketing.mid, ticketing.ticketName,ticketing.rday,ticketing.price,ticketing.count,ticketing.tnum,
+			emember.mid , emember.mname, emember.memail
+		FROM
+			ticketing
+			JOIN emember
+			ON ticketing.mid = emember.mid
+		WHERE ticketing.mid=#{mid}
+		
+	</select>
+		
+		<!-- 티켓 예매 취소하기  -->
+		<delete id="ticketDelete">
+		DELETE FROM ticketing WHERE tnum=#{param1}
+	</delete>
+	
+	<!-- 한마디 적고가 쓰기  -->
+	<insert id="writeComment">
+		INSERT INTO ment(rnum,rid,rcontent) VALUES(ment_SEQ.nextval,#{param1}, #{param2})
+	</insert>
+	
+	<!-- 별점 찍어보쟈  -->
+	<insert id="writeMent">
+		INSERT INTO ment2(rnum,rating,rid,rcontent) VALUES(ment2_SEQ.nextval,#{param1}, #{param2}, #{param3})
+	</insert>
+	
+	<!-- 리뷰에서 별점 보내보장  -->
+		<insert id="writeReview">
+			INSERT INTO ment2(rnum,rating,rid,rcontent) VALUES(ment2_SEQ.nextval,#{param1}, #{param2}, #{param3})
+		</insert>
+		
+	
+	<!--<select id="getReview" resultType="com.Exhibition.home.dto.Ment2"> 
+		SELECT * FROM ment2 WHERE rnum=#{param1} 
+		</select>-->
+		
+	<!-- 리뷰에서 별점 가져오기!  -->
+		<select id="reviewList" resultType="com.Exhibition.home.dto.Ment2"> 
+		SELECT * FROM  ment2 ORDER BY rnum DESC
+		</select>
+		
+			<!--파일 조인  -->
+		<resultMap type="com.Exhibition.home.dto.FileDto" id="FileDto2">
+			<result property="filenum" column="filenum"/>
+			<result property="sboardnum" column="sboardnum"/>
+			<result property="fileoriname" column="fileoriname"/>
+			<result property="filename" column="filename"/>
+			<result property="fileextension" column="fileextension"/>	
+			<result property="fileurl" column="fileurl"/>	
+		</resultMap>
+		
+		<resultMap type="com.Exhibition.home.dto.ShowDto" id="ShowDto2">
+			<result property="snum" column="snum"/>
+			<result property="stitle" column="stitle"/>
+			<result property="slocation" column="slocation"/>
+			<result property="sdday" column="sdday"/>	
+			<result property="sage" column="sage"/>	
+			<result property="stime" column="stime"/>	
+			<result property="sage" column="sage"/>	
+			<result property="sprice" column="sprice"/>	
+			<result property="userid" column="userid"/>	
+			<result property="filecount" column="filecount"/>	
+			
+			<collection property="fileDto" resultMap="FileDto2"></collection>
+		</resultMap>
+	
+		<!--<select id="joinTest" parameterType="com.Exhibition.home.dto.ShowDto" resultMap="ShowDto2">
+		
+		SELECT 
+			SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,
+			SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
+			from
+			SHOWTBL
+			JOIN SHOWFILES
+			ON SHOWTBL.snum = SHOWFILES.sboardnum
+		WHERE SHOWTBL.snum=#{param1}
+		
+	</select> -->
+	
+	<!--메인화면 이미지 뜨게하자 -->
+		<select id="showList2" parameterType="com.Exhibition.home.dto.ShowDto" resultMap="ShowDto2"> 
+		SELECT 
+			SHOWTBL.snum, SHOWTBL.stitle, SHOWTBL.slocation, SHOWTBL.sdday,SHOWTBL.sage,  SHOWTBL.stime, SHOWTBL.sprice, SHOWTBL.userid,SHOWTBL.filecount,
+			SHOWFILES.filenum , SHOWFILES.sboardnum, SHOWFILES.fileoriname, SHOWFILES.filename,SHOWFILES.fileextension , SHOWFILES.fileurl 
+			from
+			SHOWTBL
+			JOIN SHOWFILES
+			ON SHOWTBL.snum = SHOWFILES.sboardnum
+		</select>
+		
+		<!-- 리뷰에서 별점 보내보장2  -->
+		<insert id="rivewLike">
+			INSERT INTO ment3(rnum, rating ,rid, rcontent) 
+			VALUES(ment3_SEQ.nextval,#{param1}, #{param2}, #{param3})
+		</insert>
+		<!-- 리뷰에서 별점 가져오기!2  -->
+		<select id="reviewList2" resultType="com.Exhibition.home.dto.Ment2"> 
+		SELECT * FROM  ment3 ORDER BY rnum DESC
+		</select>
+		
+	
+		
+	
+	<!-- 공연 검색하기 -->	
+	<select id="ShowSearchTitleList" resultType="com.Exhibition.home.dto.ShowDto">
+		SELECT * FROM SHOWTBL WHERE stitle LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+	</select>
+	
+	<select id="ShowSearchLocarionList" resultType="com.Exhibition.home.dto.ShowDto">
+		SELECT * FROM SHOWTBL WHERE slocation LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+	</select>
+	
+	<select id="ShowSearchSpriceList" resultType="com.Exhibition.home.dto.ShowDto">
+		SELECT * FROM SHOWTBL WHERE sprice LIKE '%' || #{param1} || '%' ORDER BY snum DESC	
+	</select>
+	
+	
+		
+</mapper>

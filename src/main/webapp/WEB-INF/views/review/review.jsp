@@ -11,7 +11,7 @@
 <title>리뷰다</title>
 </head>
 <body>
-	<%@ include file="inc/header.jsp" %>
+	<%@ include file="../inc/header.jsp" %>
 	<center>
 		<div >
 		    <h1>장 줄리안</h1>
@@ -52,6 +52,6 @@
                         </form>
                      </table>
 	</center>
-	<%@ include file="inc/footer.jsp" %>
+	<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>

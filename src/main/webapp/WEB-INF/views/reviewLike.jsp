@@ -8,56 +8,17 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/content.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/board.js"></script>
 <link rel="stylesheet" href="resources/css/ind.css">
-<link rel="stylesheet"  href="resources/css/like.css">
 <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+<style type="text/css">
 
+</style>
 <title>리뷰다</title>
 <script >
-$('#likebtn').click(function(){
-	likeupdate();
-});
-
-function likeupdate(){
-	var root = getContextPath(),
-	likeurl = "/like/likeupdate",
-	mid = $('#mid').val(),
-	bid = $('#bid').val(),
-	count = $('#likecheck').val(),
-	data = {"ltmid" : mid,
-			"ltbid" : bid,
-			"count" : count};
-	
-$.ajax({
-	url : root + likeurl,
-	type : 'PUT',
-	contentType: 'application/json',
-	data : JSON.stringify(data),
-	success : function(result){
-		console.log("수정" + result.result);
-		if(count == 1){
-			console.log("좋아요 취소");
-			 $('#likecheck').val(0);
-			 $('#likebtn').attr('class','btn btn-light');
-		}else if(count == 0){
-			console.log("좋아요!");
-			$('#likecheck').val(1);
-			$('#likebtn').attr('class','btn btn-danger');
-		}
-	}, error : function(result){
-		console.log("에러" + result.result)
-	}
-	
-	});
-};
-
-function getContextPath() {
-    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-    return location.href.substring( hostIndex, location.href.indexOf('/', hostIndex + 1) );
-} 
 
 </script>
 </head>
 <body>
+
 	<%@ include file="inc/header.jsp" %>
 	<center>
 		<div >
@@ -73,19 +34,19 @@ function getContextPath() {
 	<table border="0" cellspacing="0" cellpadding="10">
                         <form action="reviewLike2" method="post" >
                   
-             <!--          <input style="width: 124px; height: 58px;"
-					class="btn btn-outline-danger" id=""  name="liker"  font size="5px" value="♥"  >-->
+                   <input style="width: 124px; height: 58px;"
+					class="btn btn-outline-danger" id=""  name="liker"  font size="5px" value="♥"  >
 					
-				
-								
-                       <!--     <button type="button" class="btn btn-outline-secondary" id="">
+									
+						
+                    <!--        <button type="button" class="btn btn-outline-secondary" id="">
 						<i class="material-icons" style="font-size: 16px;">♥</i>
 									좋아요
-						</button>--> 
+						</button>
 						
 				  	<a href=""  class="btn btn-primary my-2">
 			   			♥<span class="badge text-bg-secondary"  text="" id="liker"></span>
-			   		</a>
+			   		</a>-->  
 						
                            <tr>
                               <td><span class="content_text01">아이디:</span></td>

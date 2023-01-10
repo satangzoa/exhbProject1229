@@ -11,12 +11,12 @@
 <title>리뷰다</title>
 </head>
 <body>
-	<%@ include file="inc/header.jsp" %>
+	<%@ include file="../inc/header.jsp" %>
 	리뷰성공!
 	<c:forEach begin="1" end="${rating }"> <!-- 디비에 저장된 별 불러오는것 -->
 			⭐
 			</c:forEach>
 	</center>
-	<%@ include file="inc/footer.jsp" %>
+	<%@ include file="../inc/footer.jsp" %>
 </body>
 </html>
