@@ -60,16 +60,20 @@ public class TicketController {
 		String rday = request.getParameter("rday");
 		String price = request.getParameter("price");
 		String count = request.getParameter("count");
+		String liker = request.getParameter("liker");
 		
 		
 		IDao dao = sqlSession.getMapper(IDao.class);
-		int joinFlag = dao.ticketing(id, ticketName,rday,price,count);
+		
+		dao.likehit(liker);
+		int joinFlag = dao.ticketing(id, ticketName,rday,price,count,liker);
 	
 		 model.addAttribute("id",id);
 		 model.addAttribute("ticketName",ticketName);
 	    model.addAttribute("rday",rday);
 		 model.addAttribute("price",price);
 		model.addAttribute("count",count);
+		model.addAttribute("liker",liker);
 		
 		return "ticketingOk";
 	}

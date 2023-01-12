@@ -32,7 +32,10 @@ public interface IDao {
 			public Ticket tictekInfo(String tnum);
 				
 				//예매
-			public int ticketing(String mid, String ticketName, String rday, String price , String count);
+			public int ticketing(String mid, String ticketName, String rday, String price , String count, String liker);
+			
+			//좋아요조회수
+			public void likehit(String tnum);//조회수
 				
 				//예매한 티켓 정보 가져오기//조인
 			public List<Ticketing> ticketConfirm(String mid);
@@ -68,11 +71,6 @@ public interface IDao {
 			//리뷰에서 별점 결과 몽땅 가져오기2
 			public List<ReviewLike> reviewList2();
 			
-			
-			//좋아요 버튼 클릭
-			public int likement(int mnum, String mid); 
-			// 좋아요 여러번 방지
-			public int likementCheck(String mid,int mnum);	
 			
 			//공연 검색 관련
 			public ArrayList<ShowDto> ShowSearchTitleList(String searchKey);

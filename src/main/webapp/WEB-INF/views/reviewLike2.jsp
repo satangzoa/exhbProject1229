@@ -47,7 +47,7 @@
 								   </c:forEach>	 
                              <tr> <td colspan="2" align="center">
 
-                                 <input class="button_type01" type="button" value="리뷰쓰기"  onclick="script:window.location='review'">&nbsp;&nbsp; 
+                                 <input class="button_type01" type="button" value="리뷰쓰기"  onclick="script:window.location='reviewLike'">&nbsp;&nbsp; 
                                  <input class="button_type01" type="button" value="처음으로" onclick="script:window.location='index'">
                               </td>
                            </tr>

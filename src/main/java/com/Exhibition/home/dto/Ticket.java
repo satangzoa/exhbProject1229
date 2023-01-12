@@ -14,6 +14,7 @@ public class Ticket { //ticket 전시회 티켓 정보
 	private String ticketName; //티켓이름
 	private String count;//티켓 매수
 	private String price;//티켓가격
+	private String liker;//좋아요
 	
 
 }

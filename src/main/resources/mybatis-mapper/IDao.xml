@@ -6,40 +6,7 @@
 	
 <mapper namespace="com.Exhibition.home.dao.IDao">
 
-			<!-- 좋아요 조인 -->
-	
-	<resultMap type="com.Exhibition.home.dto.ReviewLike" id="ReviewLike2">
-		<result property="rnum" column="rnum"/> 
-		<result property="rating" column="rating"/>
-		<result property="rid" column="rid"/>
-		<result property="rcontent" column="rcontent"/>	
-	</resultMap>
-	
-	<resultMap type="com.Exhibition.home.dto.ReviewLikeDa" id="ReviewLikeDa2">
-		<result property="lnum" column="lnum"/>
-		<result property="mnum" column="mnum"/>
-		<result property="mid" column="mid"/>
 		
-			<collection property="reviewlike" resultMap="ReviewLike2"></collection>
-		</resultMap>
-		
-<!--	<select id="likementCheck" resultType="int">
-		SELECT count(*) FROM likement WHERE mid=#{param1} AND mnum=${param2}
-		</select>-->
-	<select id="ReviewLikeDa2" parameterType="com.Exhibition.home.dto.ReviewLikeDa" resultMap="ReviewLikeDa2"> 
-		SELECT 
-			ment3.rnum, ment3.rating, ment3.rnum, ment3.rid, ment3.rcontent, 
-			mentlike.lnum, mentlike.mnum, mentlike.mid
-		from
-			mentlike
-			JOIN ment3
-			ON mentlike.rnum = ment3.mnum
-	</select>
-	
-	
-	<insert id="likement">
-		INSERT INTO mentlike(lnum, mnum, mid) VALUES(mentlike_seq.nextval,${param1},#{param2})
-	</insert>
 	
 	
 		

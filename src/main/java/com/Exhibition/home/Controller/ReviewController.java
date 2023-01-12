@@ -168,35 +168,7 @@ public class ReviewController {
 	}
 	
 
-	@RequestMapping(value = "commentlike")//좋아요 확인하기
-		public String commentlike(HttpServletRequest request, HttpSession session) {
-		
-		IDao dao = sqlSession.getMapper(IDao.class);
-		String mid = (String) session.getAttribute("memberId");
-		int lnum=Integer.parseInt(request.getParameter("lnum"));
-		int mnum = Integer.parseInt(request.getParameter("mnum")); 
-		
-		int checkCount = dao.likementCheck(mid, mnum);
-	
-	
-		if(checkCount != 0) {
-			return String.format("redirerct:reviewLike?mnum=%s",mnum);
-		
-		}else {
-			
-			dao.likement(mnum, mid);
-			
-		}
-		return String.format("redirerct:reviewLike2?mnum=%s",mnum);
-	}
-	
 
-	@RequestMapping (value ="like")
-	public String like() {
-		
-		
-		return "like";
-	}
 	
 }
 

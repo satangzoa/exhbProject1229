@@ -97,9 +97,14 @@
 		
 		<!-- 티켓 예매하기  -->
 		<insert id="ticketing">
-		insert into ticketing(tnum,mid, ticketName, rday, price, count)
-		VALUES(ticketing_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5}) 
+		insert into ticketing(tnum,mid, ticketName, rday, price, count,liker)
+		VALUES(ticketing_SEQ.nextval,#{param1}, #{param2}, #{param3},#{param4},#{param5},#{param6}) 
 		</insert>
+		
+		<update id="likehit">
+		UPDATE ticketing SET liker=liker+1 WHERE tnum=#{param1}
+		</update>
+		
 		
 		
 		<!-- 티켓 예매 확인정보 가져오기-->
